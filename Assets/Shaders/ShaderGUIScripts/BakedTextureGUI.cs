@@ -13,9 +13,11 @@ public class BakedTextureGUI : ShaderGUI
         {
             MaterialProperty bakedTexture = FindProperty("_BakedTexture", properties);
             MaterialProperty normalTexture = FindProperty("_NormalTexture", properties);
+            MaterialProperty emissionTexture = FindProperty("_EmissionTexture", properties);
 
             materialEditor.ShaderProperty(bakedTexture, bakedTexture.displayName);
             materialEditor.ShaderProperty(normalTexture, normalTexture.displayName);
+            materialEditor.ShaderProperty(emissionTexture, emissionTexture.displayName);
         }
 
         EditorGUILayout.Space();

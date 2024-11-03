@@ -7,6 +7,8 @@ Shader "Unlit/s_bakedTextures"
         [NoScaleOffset] _NormalTexture ("Normal Texture", 2D) = "blue" {}
         [HideInInspector] _NormalStrength("Normal Strength", Range(0,1)) = 1
         [HideInInspector] _NormalOffset("Normal Offset", Range(0,1)) = 0.1
+
+        [NoScaleOffset] _EmissionTexture("Emission Texture", 2D) = "black" {}
         
         [HideInInspector] _AdditionalLightHueFalloff("Additional Light Hue Falloff", Range(0,360)) = 180
         [HideInInspector] _AdditionalLightSaturationFalloff("Additional Light Saturation Falloff", Float) = 1 
@@ -35,9 +37,11 @@ Shader "Unlit/s_bakedTextures"
             
                 TEXTURE2D(_BakedTexture);
                 TEXTURE2D(_NormalTexture);
+                TEXTURE2D(_EmissionTexture);
 
                 SAMPLER(sampler_BakedTexture);
                 SAMPLER(sampler_NormalTexture);
+                SAMPLER(sampler_EmissionTexture);
 
                 struct VertexInput
                 {
@@ -48,8 +52,11 @@ Shader "Unlit/s_bakedTextures"
 
                     float2 uvBakedTexture : TEXCOORD0;
                     float2 uvNormalTexture : TEXCOORD1;
+
                     float3 bitangent : TEXCOORD4;
                     float3 worldPos : TEXCOORD5;
+
+                    float2 uvEmissionTexture : TEXCOORD6;
                 };
 
                 struct VertexOutput 
@@ -64,6 +71,8 @@ Shader "Unlit/s_bakedTextures"
                     float3 bitangent : TEXCOORD4;
 
                     float3 worldPos : TEXCOOR5;
+
+                    float2 uvEmissionTexture : TEXCOORD6;
                 };
 
             ENDHLSL
@@ -72,13 +81,17 @@ Shader "Unlit/s_bakedTextures"
         {
             Tags {"Lightmode" = "UniversalForward"}
             HLSLPROGRAM
+
             #pragma vertex vert
             #pragma fragment frag
 
+            //enable additional light shadow maps
             #pragma multi_compile _ _ADDITIONAL_LIGHT_SHADOWS
 
+            //enable main light shadow maps
             #pragma multi_compile _ _MAIN_LIGHT_SHADOWS _MAIN_LIGHT_SHADOWS_CASCADE
 
+            //enable ambient light generation
             #pragma multi_compile _ UNITY_COLORSPACE_GAMMA
 
             // This is used during shadow map generation to differentiate between directional and punctual light shadows, as they use different formulas to apply Normal Bias
@@ -87,10 +100,14 @@ Shader "Unlit/s_bakedTextures"
                 VertexOutput vert (VertexInput v)
                 {
                     VertexOutput o;
+
                     o.position = TransformObjectToHClip(v.position);
                     o.worldPos = mul(unity_ObjectToWorld, float4(v.position.xyz, 1.0)).xyz;
+
                     o.uvBakedTexture = v.uvBakedTexture;
                     o.uvNormalTexture = v.uvNormalTexture;
+                    o.uvEmissionTexture = v.uvEmissionTexture;
+
                     o.normal = TransformObjectToWorldNormal(v.normal);
                     float3 tangent = normalize(v.tangent.xyz);
                     o.tangent = (tangent,1);
@@ -101,6 +118,8 @@ Shader "Unlit/s_bakedTextures"
                 float4 frag (VertexOutput IN) : SV_TARGET
                 {
                     float3 bakedTextureRGB = SAMPLE_TEXTURE2D(_BakedTexture, sampler_BakedTexture, IN.uvBakedTexture).rgb;
+                    float3 emissionTextureRGB = SAMPLE_TEXTURE2D(_EmissionTexture, sampler_EmissionTexture, IN.uvEmissionTexture).rgb;
+
                     float3 tangentNormals = TextureToTangentNormal(
                         _NormalTexture,
                         sampler_NormalTexture,
@@ -109,7 +128,7 @@ Shader "Unlit/s_bakedTextures"
                         1);
                     IN.normal = TangentToWorldNormal(tangentNormals, IN.tangent, IN.bitangent, IN.normal);
                     
-                    //inputdata related functions
+                    
                     InputData inputData = (InputData)0;
                     half4 calculatedShadows = CalculateShadowMask(inputData);
                     half3 ambientLight = SampleSH(IN.normal) * _AmbientLightStrength;
@@ -124,7 +143,8 @@ Shader "Unlit/s_bakedTextures"
 
                     float3 mainlightMap = MainLight(IN.worldPos, IN.normal, calculatedShadows);
                     
-                    float3 albedo = bakedTextureRGB * (mainlightMap + additionalLightsMap + ambientLight) ;
+                    float3 totalLightMap = mainlightMap + additionalLightsMap + ambientLight;
+                    float3 albedo = bakedTextureRGB * totalLightMap + emissionTextureRGB;
                     return float4(albedo,1);
                 }
             
