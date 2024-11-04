@@ -1,0 +1,18 @@
+{
+  "version": "2.1.0",
+  "aspectRatio": "1.7777777777777777",
+  "fps": 24,
+  "defaultBoardTiming": 2000,
+  "boards": [
+    {
+      "uid": "0ICU2",
+      "url": "board-1-0ICU2.png",
+      "newShot": false,
+      "lastEdited": 1730694284808,
+      "layers": {},
+      "number": 1,
+      "shot": "1A",
+      "time": 0
+    }
+  ]
+}
