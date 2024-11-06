@@ -206,7 +206,8 @@ Shader "Unlit/s_seemlessTextures"
                         _HalftoneLightThreshold,
                         _HalftoneSoftness);
                     
-                    float3 albedo = mainlightMap + additionalLightsMap + ambientLight;
+                    float3 totalLightMap = mainlightMap + additionalLightsMap + ambientLight;
+                    float3 albedo = textureSampling * totalLightMap;
                     return float4(albedo,1);
                 }
             
