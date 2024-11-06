@@ -21,7 +21,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: m_seemlessTexture
-  m_Shader: {fileID: 4800000, guid: 9401ccaa3f153a74db749a29a2e0ede5, type: 3}
+  m_Shader: {fileID: 4800000, guid: 880b695c690839c4b8af7de8d7cf69d4, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -37,6 +37,10 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - _BakedTexture:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _BaseMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -61,11 +65,23 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _EmissionTexture:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _HalftonePattern:
+        m_Texture: {fileID: 2800000, guid: 9c159d587d8eb5e4fafbc6204c801519, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _MainTex:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _NormalTexture:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
@@ -109,13 +125,13 @@ Material:
     - _AdditionalLightSaturationFalloff: 2.08
     - _AlphaClip: 0
     - _AlphaToMask: 0
-    - _AmbientLightStrength: 0.079
+    - _AmbientLightStrength: 0.681
     - _Blend: 0
     - _BlendModePreserveSpecular: 1
     - _BumpScale: 1
     - _ClearCoatMask: 0
     - _ClearCoatSmoothness: 0
-    - _ColorHueOffset: 13
+    - _ColorHueOffset: 12
     - _ColorValueOffset: 0.3
     - _Cull: 2
     - _Cutoff: 0.5
@@ -127,15 +143,19 @@ Material:
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
+    - _HalftoneLightOffset: 0.2
+    - _HalftoneSoftness: 43.69
     - _Metallic: 0
+    - _NormalOffset: 0.1
+    - _NormalStrength: 1
     - _OcclusionStrength: 1
     - _Parallax: 0.005
     - _QueueOffset: 0
     - _ReceiveShadows: 1
     - _SeemlessPatternNormalOffset: 0.236
     - _SeemlessPatternNormalStrength: 1
-    - _SeemlessPatternScale: 19.31
-    - _SeemlessTextureScale: 4.2
+    - _SeemlessPatternScale: 1.05
+    - _SeemlessTextureScale: -1.78
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
@@ -149,6 +169,6 @@ Material:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
-    - _TextureColor: {r: 0.5471698, g: 0.503293, b: 0.503293, a: 1}
+    - _TextureColor: {r: 0.764151, g: 0.56737405, b: 0.42172483, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
