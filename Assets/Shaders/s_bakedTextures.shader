@@ -182,7 +182,7 @@ Shader "Unlit/s_bakedTextures"
                     float3 mainlightMap = MainLight(IN.worldPos, IN.normal, calculatedShadows, halftoneTexture, _HalftoneLightOffset, _HalftoneSoftness);
                     
                     float3 totalLightMap = mainlightMap + additionalLightsMap + ambientLight;
-                    float3 albedo = bakedTextureRGB * totalLightMap + emissionTextureRGB;
+                    float3 albedo = (bakedTextureRGB * totalLightMap) + emissionTextureRGB;
                     return float4(albedo,1);
                 }
             

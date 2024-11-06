@@ -196,7 +196,7 @@ Shader "Unlit/s_seemlessTextures"
 
                     float3 mainlightMap = MainLight(IN.worldPos, IN.normal, calculatedShadows, halftoneTexture, _HalftoneLightOffset, _HalftoneSoftness);
                     
-                    float3 albedo = textureSampling * (mainlightMap + additionalLightsMap + ambientLight) ;
+                    float3 albedo = mainlightMap;
                     return float4(albedo,1);
                 }
             

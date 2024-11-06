@@ -4,7 +4,9 @@ float HalfTone (float totalAtten, float halftoneTexture, float lightoffset, floa
 {    
     totalAtten *= softness;
     totalAtten += lightoffset;
-    float halftone = saturate(halftoneTexture - (1 - totalAtten));
+    float adjustedHalftoneTexture = lerp(0.95, 1, halftoneTexture);
+
+    float halftone = adjustedHalftoneTexture - (1 - totalAtten);
     
     return halftone;
 
@@ -44,10 +46,10 @@ float halftoneSoftness
         
         
         fullShadowMap = lightDirection * adjustAtten;
-        
         float halftoneShadowMap = HalfTone(fullShadowMap, halftoneTexture, halftoneLightOffset, halftoneSoftness);
+        
         lightMapColorLerp = lerp(hueShiftLightColorRGB, light.color, halftoneShadowMap);
-        lightTexColoredShadows += lightMapColorLerp * halftoneShadowMap;
+        lightTexColoredShadows += lightMapColorLerp * fullShadowMap;
     }
 
     return lightTexColoredShadows;
