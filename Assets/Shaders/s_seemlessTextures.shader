@@ -2,6 +2,7 @@ Shader "Unlit/s_seemlessTextures"
 {
     Properties
     { 
+        //seemless texture
         [NoScaleOffset] _SeemlessPattern ("Seemless Pattern", 2D) = "white" {}
         [NoScaleOffset] _TexturePattern("Texture Pattern", 2D) = "white" {}
         [HideInInspector] _SeemlessPatternScale ("Seemless Pattern Scale", Float) = 1
@@ -11,11 +12,20 @@ Shader "Unlit/s_seemlessTextures"
         [HideInInspector] _TextureColor("Texture Color", Color) = (0.5,0.5,0.5,1)
         [HideInInspector] _ColorHueOffset("Color Hue Offset", Range(0,360)) = 13
         [HideInInspector] _ColorValueOffset("Color Value Offset", Range(0,1)) = 0.5
-        
+
+        //total light
+        [HideInInspector] _AmbientLightStrength("Ambient Light Strength", Range(0,1)) = 1
+
+        //additional light
         [HideInInspector] _AdditionalLightHueFalloff("Additional Light Hue Falloff", Range(0,360)) = 180
         [HideInInspector] _AdditionalLightSaturationFalloff("Additional Light Saturation Falloff", Float) = 1 
         [HideInInspector] _AdditionalLightIntensityCurve("Additional Light Intensity Curve", Range(0.01, 2.0)) = 1
-        [HideInInspector] _AmbientLightStrength("Ambient Light Strength", Range(0,1)) = 1
+
+
+        //halftone
+        [NoScaleOffset] _HalftonePattern("Halftone Pattern", 2D) = "white" {}
+        [HideInInspector] _HalftoneLightOffset("Halftone Light Offset", Float) = 0
+        [HideInInspector] _HalftoneSoftness("Halftone Softness", Float) = 1
     }
     SubShader
     {
@@ -26,30 +36,39 @@ Shader "Unlit/s_seemlessTextures"
             
                 CBUFFER_START(UnityPerMaterial)
 
+                    //seemless texture
                     float _SeemlessPatternScale;
                     float _SeemlessTextureScale;
-
                     float _SeemlessPatternNormalOffset;
                     float _SeemlessPatternNormalStrength;
-
                     float4 _TextureColor;
-
                     float _ColorHueOffset;
                     float _ColorValueOffset;
 
+                    //ambient light
+                    float _AmbientLightStrength;
+
+                    // additional lights
                     float _AdditionalLightHueFalloff;
                     float _AdditionalLightSaturationFalloff;
                     float _AdditionalLightIntensityCurve;
 
-                    float _AmbientLightStrength;
+                    //halftone
+                    float _HalftoneLightOffset;
+                    float _HalftoneSoftness;
+
 
                 CBUFFER_END
             
                 TEXTURE2D(_SeemlessPattern);
                 TEXTURE2D(_TexturePattern);
 
+                TEXTURE2D(_HalftonePattern);
+
                 SAMPLER(sampler_SeemlessPattern);
                 SAMPLER(sampler_TexturePattern);
+
+                SAMPLER(sampler_HalftonePattern);
 
 
                 struct VertexInput
@@ -61,8 +80,11 @@ Shader "Unlit/s_seemlessTextures"
 
                     float2 uvSeemlessPattern : TEXCOORD0;
                     float2 uvTexturePattern : TEXCOORD1;
+
                     float3 bitangent : TEXCOORD4;
                     float3 worldPos : TEXCOORD5;
+
+                    float2 uvHalftonePattern : TEXCOORD6;
                 };
 
                 struct VertexOutput 
@@ -77,6 +99,8 @@ Shader "Unlit/s_seemlessTextures"
                     float3 bitangent : TEXCOORD4;
 
                     float3 worldPos : TEXCOOR5;
+
+                    float2 uvHalftonePattern : TEXCOORD6;
                 };
 
             ENDHLSL
@@ -105,6 +129,8 @@ Shader "Unlit/s_seemlessTextures"
 
                     o.uvSeemlessPattern = v.uvSeemlessPattern;
                     o.uvTexturePattern = v.uvTexturePattern;
+
+                    o.uvHalftonePattern = v.uvHalftonePattern;
 
                     o.normal = TransformObjectToWorldNormal(v.normal);
                     float3 tangent = normalize(v.tangent.xyz);
@@ -154,15 +180,21 @@ Shader "Unlit/s_seemlessTextures"
                     half4 calculatedShadows = CalculateShadowMask(inputData);
                     half3 ambientLight = SampleSH(IN.normal) * _AmbientLightStrength;
 
+                    //halftone
+                    float halftoneTexture = SAMPLE_TEXTURE2D(_HalftonePattern, sampler_HalftonePattern, IN.uvHalftonePattern).r;
+
                     float3 additionalLightsMap = AdditionalLights(
                         IN.worldPos,
                         IN.normal,
                         calculatedShadows,
                         _AdditionalLightIntensityCurve,
                         _AdditionalLightHueFalloff,
-                        _AdditionalLightSaturationFalloff);
+                        _AdditionalLightSaturationFalloff,
+                        halftoneTexture,
+                        _HalftoneLightOffset,
+                        _HalftoneSoftness);
 
-                    float3 mainlightMap = MainLight(IN.worldPos, IN.normal, calculatedShadows);
+                    float3 mainlightMap = MainLight(IN.worldPos, IN.normal, calculatedShadows, halftoneTexture, _HalftoneLightOffset, _HalftoneSoftness);
                     
                     float3 albedo = textureSampling * (mainlightMap + additionalLightsMap + ambientLight) ;
                     return float4(albedo,1);
