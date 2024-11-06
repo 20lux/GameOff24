@@ -59,3 +59,9 @@ float3 TextureToTangentNormal(Texture2D seemlessTexture, SamplerState Sampler, f
     float3 vb = float3(0, 1, (vSample - normalSample) * strength);
     return normalize(cross(va, vb));
 }
+
+float3 Posterize(float3 inTexture, float steps)
+{
+    float3 outTexture = floor(inTexture / (1 / steps)) * (1 / steps);
+    return outTexture;
+}
