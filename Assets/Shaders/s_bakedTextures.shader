@@ -23,8 +23,9 @@ Shader "Unlit/s_bakedTextures"
 
         //halftone
         [NoScaleOffset] _HalftonePattern("Halftone Pattern", 2D) = "white" {}
-        [HideInInspector] _HalftoneLightOffset("Halftone Light Offset", Float) = 0
-        [HideInInspector] _HalftoneSoftness("Halftone Softness", Float) = 1
+        [HideInInspector] _HalftoneFalloffThreshold("Halftone Falloff Threshold", Float) = 0
+        [HideInInspector] _HalftoneLightThreshold("Halftone Light Threshold", Float) = 0
+        [HideInInspector] _HalftoneSoftness("Halftone Softness", Range(0.01,5)) = 1
 
     }
     SubShader
@@ -49,7 +50,8 @@ Shader "Unlit/s_bakedTextures"
                     float _AdditionalLightIntensityCurve;
 
                     //halftone
-                    float _HalftoneLightOffset;
+                    float _HalftoneFalloffThreshold;
+                    float _HalftoneLightThreshold;
                     float _HalftoneSoftness;
 
                 CBUFFER_END
@@ -176,13 +178,21 @@ Shader "Unlit/s_bakedTextures"
                         _AdditionalLightHueFalloff,
                         _AdditionalLightSaturationFalloff,
                         halftoneTexture,
-                        _HalftoneLightOffset,
+                        _HalftoneFalloffThreshold,
+                        _HalftoneLightThreshold,
                         _HalftoneSoftness);
 
-                    float3 mainlightMap = MainLight(IN.worldPos, IN.normal, calculatedShadows, halftoneTexture, _HalftoneLightOffset, _HalftoneSoftness);
+                    float3 mainlightMap = MainLight(
+                        IN.worldPos,
+                        IN.normal,
+                        calculatedShadows,
+                        halftoneTexture,
+                        _HalftoneFalloffThreshold,
+                        _HalftoneLightThreshold,
+                        _HalftoneSoftness);
                     
                     float3 totalLightMap = mainlightMap + additionalLightsMap + ambientLight;
-                    float3 albedo = bakedTextureRGB * totalLightMap + emissionTextureRGB;
+                    float3 albedo = (bakedTextureRGB * totalLightMap) + emissionTextureRGB;
                     return float4(albedo,1);
                 }
             
