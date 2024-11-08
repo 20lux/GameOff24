@@ -141,7 +141,7 @@ Shader "Unlit/s_seemlessTextures"
                     return o;
                 }
 
-                float3 TextureSampling(float2 uvSeemlessPattern, float2 uvTexturePattern)
+                float3 TextureSampling(float2 uvSeemlessPattern, float2 uvTexturePattern, half3 ambientLight)
                 {
                     float2 scaledSeemlessPattern = frac(uvSeemlessPattern * _SeemlessPatternScale);
                     float2 scaledTexturePattern = frac(uvTexturePattern * _SeemlessTextureScale);
@@ -154,7 +154,7 @@ Shader "Unlit/s_seemlessTextures"
                     float3 colorB = HueDegrees(_TextureColor, 1 - _ColorHueOffset);
                     float3 lerpA = lerp(colorA, colorB, texturePattern);
 
-                    float3 darkerTextureColor = _TextureColor * _ColorValueOffset;
+                    float3 darkerTextureColor = _TextureColor * lerp(ambientLight, 1, _ColorValueOffset);
                     float3 colorC = HueDegrees(darkerTextureColor, _ColorHueOffset);
                     float3 colorD = HueDegrees(darkerTextureColor, 1 - _ColorHueOffset);
                     float3 lerpB = lerp(colorC, colorD, texturePattern);
@@ -174,12 +174,14 @@ Shader "Unlit/s_seemlessTextures"
                     IN.normal = TangentToWorldNormal(tangentNormals, IN.tangent, IN.bitangent, IN.normal);
 
                     //sample textures
-                    float3 textureSampling = TextureSampling(IN.uvSeemlessPattern, IN.uvTexturePattern);
                     
                     //inputdata related functions
                     InputData inputData = (InputData)0;
                     half4 calculatedShadows = CalculateShadowMask(inputData);
                     half3 ambientLight = SampleSH(IN.normal) * _AmbientLightStrength;
+
+                    //texture Sampling
+                    float3 textureSampling = TextureSampling(IN.uvSeemlessPattern, IN.uvTexturePattern, ambientLight);
 
                     //halftone
                     float halftoneTexture = SAMPLE_TEXTURE2D(_HalftonePattern, sampler_HalftonePattern, IN.uvHalftonePattern).r;
