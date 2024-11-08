@@ -31,7 +31,7 @@ public class BakedTextureGUI : ShaderGUI
         {
             MaterialProperty ambientLightStrength = FindProperty("_AmbientLightStrength", properties);
 
-            materialEditor.ShaderProperty(ambientLightStrength, ambientLightStrength.displayName);
+            materialEditor.ShaderProperty(ambientLightStrength, new GUIContent(ambientLightStrength.displayName, "Interpolates the shade color between black and the ambient color"));
         }
 
         EditorGUILayout.Space();
@@ -43,9 +43,9 @@ public class BakedTextureGUI : ShaderGUI
             MaterialProperty additionalLightSaturationFalloff = FindProperty("_AdditionalLightSaturationFalloff", properties);
             MaterialProperty additionalLightIntensityCurve = FindProperty("_AdditionalLightIntensityCurve", properties);
 
-            materialEditor.ShaderProperty(additionalLightHueFalloff, additionalLightHueFalloff.displayName);
-            materialEditor.ShaderProperty(additionalLightSaturationFalloff, additionalLightSaturationFalloff.displayName);
-            materialEditor.ShaderProperty(additionalLightIntensityCurve, additionalLightIntensityCurve.displayName);
+            materialEditor.ShaderProperty(additionalLightHueFalloff, new GUIContent(additionalLightHueFalloff.displayName, "Controls the hue contrast as the light falls off"));
+            materialEditor.ShaderProperty(additionalLightSaturationFalloff, new GUIContent(additionalLightSaturationFalloff.displayName, "Controls the saturation contrast as the light falls off. Mainly used when the light color is desaturated"));
+            materialEditor.ShaderProperty(additionalLightIntensityCurve, new GUIContent(additionalLightIntensityCurve.displayName, "Controls hows the light intensity interpolates"));
         }
 
         EditorGUILayout.Space();
@@ -58,7 +58,7 @@ public class BakedTextureGUI : ShaderGUI
             MaterialProperty halftoneLightThreshold = FindProperty("_HalftoneLightThreshold", properties);
             MaterialProperty halftoneSoftness = FindProperty("_HalftoneSoftness", properties);
 
-            materialEditor.ShaderProperty(halftonePattern, halftonePattern.displayName);
+            materialEditor.ShaderProperty(halftonePattern, new GUIContent(halftonePattern.displayName, "Use black and white texture pattern"));
             materialEditor.ShaderProperty(halftoneFalloffThreshold, halftoneFalloffThreshold.displayName);
             materialEditor.ShaderProperty(halftoneLightThreshold, halftoneLightThreshold.displayName);
             materialEditor.ShaderProperty(halftoneSoftness, halftoneSoftness.displayName);
