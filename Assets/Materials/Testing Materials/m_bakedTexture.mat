@@ -21,7 +21,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: m_bakedTexture
-  m_Shader: {fileID: 4800000, guid: 880b695c690839c4b8af7de8d7cf69d4, type: 3}
+  m_Shader: {fileID: 4800000, guid: 9401ccaa3f153a74db749a29a2e0ede5, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -70,7 +70,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _HalftonePattern:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 36d69e3481b51224fa7a1c87eb7737f8, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
@@ -94,7 +94,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SeemlessPattern:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: c2c675be0a705c34fad3592687584925, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SpecGlossMap:
@@ -102,7 +102,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _TexturePattern:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 9c159d587d8eb5e4fafbc6204c801519, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
@@ -120,7 +120,7 @@ Material:
     m_Ints: []
     m_Floats:
     - _AddPrecomputedVelocity: 0
-    - _AdditionalLightHueFalloff: 54
+    - _AdditionalLightHueFalloff: 0
     - _AdditionalLightIntensityCurve: 0.094
     - _AdditionalLightSaturationFalloff: 1.3
     - _AlphaClip: 0
@@ -131,8 +131,8 @@ Material:
     - _BumpScale: 1
     - _ClearCoatMask: 0
     - _ClearCoatSmoothness: 0
-    - _ColorHueOffset: 13
-    - _ColorValueOffset: 0.5
+    - _ColorHueOffset: 77
+    - _ColorValueOffset: 0
     - _Cull: 2
     - _Cutoff: 0.5
     - _DetailAlbedoMapScale: 1
@@ -143,10 +143,10 @@ Material:
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
-    - _HalftoneFalloffThreshold: 9.58
+    - _HalftoneFalloffThreshold: 8.28
     - _HalftoneLightOffset: 2.42
-    - _HalftoneLightThreshold: 6.35
-    - _HalftoneSoftness: 0.01
+    - _HalftoneLightThreshold: 5.51
+    - _HalftoneSoftness: 0.57
     - _Metallic: 0
     - _NormalOffset: 0.1
     - _NormalStrength: 1
@@ -157,7 +157,7 @@ Material:
     - _SeemlessPatternNormalOffset: 0
     - _SeemlessPatternNormalStrength: 0
     - _SeemlessPatternScale: 1
-    - _SeemlessTextureScale: 1
+    - _SeemlessTextureScale: 2.65
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
@@ -171,6 +171,6 @@ Material:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
-    - _TextureColor: {r: 1, g: 1, b: 1, a: 1}
+    - _TextureColor: {r: 0.509434, g: 0.36285156, b: 0.36285156, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
