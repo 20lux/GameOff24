@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEditor;
 using System;
 
-public class FastIKFrabric : MonoBehaviour
+public class BasicInverseKinematics : MonoBehaviour
 {
     public int chainLength = 2; // number of bones in the chain
 
@@ -13,6 +13,8 @@ public class FastIKFrabric : MonoBehaviour
     public float delta = 0.001f; //small tolerance to decide when to stop adjusting
 
     [Range(0,1)] public float snapBackStrength = 1.0f; //how much the bones snap back to their original positions
+
+    public bool enableGizmos = true;
 
     protected float[] bonesLength;
     protected float completeLength;
@@ -177,18 +179,21 @@ public class FastIKFrabric : MonoBehaviour
 
     void OnDrawGizmos()
     {
-        var current = this.transform;
-        for (int i = 0; i < chainLength && current != null && current.parent != null; i++)
+        if (enableGizmos)
         {
-            var scale = Vector3.Distance(current.position, current.parent.position) * 0.1f;
-            Handles.matrix = Matrix4x4.TRS(
-                current.position,
-                Quaternion.FromToRotation(Vector3.up, current.parent.position - current.position),
-                new Vector3(scale, Vector3.Distance(current.parent.position, current.position), scale)
-                );
-            Handles.color = Color.green;
-            Handles.DrawWireCube(Vector3.up * 0.5f, Vector3.one);
-            current = current.parent;
+            var current = this.transform;
+            for (int i = 0; i < chainLength && current != null && current.parent != null; i++)
+            {
+                var scale = Vector3.Distance(current.position, current.parent.position) * 0.1f;
+                Handles.matrix = Matrix4x4.TRS(
+                    current.position,
+                    Quaternion.FromToRotation(Vector3.up, current.parent.position - current.position),
+                    new Vector3(scale, Vector3.Distance(current.parent.position, current.position), scale)
+                    );
+                Handles.color = Color.green;
+                Handles.DrawWireCube(Vector3.up * 0.5f, Vector3.one);
+                current = current.parent;
+            }
         }
     }
 }
