@@ -24,8 +24,8 @@ Shader "Unlit/s_seemlessTextures"
 
         //halftone
         [NoScaleOffset] _HalftonePattern("Halftone Pattern", 2D) = "white" {}
-        [HideInInspector] _HalftoneFalloffThreshold("Halftone Falloff Threshold", Float) = 0
-        [HideInInspector] _HalftoneLightThreshold("Halftone Light Threshold", Float) = 0
+        [HideInInspector] _HalftoneFalloffThreshold("Halftone Falloff Threshold", Float) = 8
+        [HideInInspector] _HalftoneLightThreshold("Halftone Light Threshold", Float) = 5
         [HideInInspector] _HalftoneSoftness("Halftone Softness", Range(0.01,5)) = 1
     }
     SubShader
