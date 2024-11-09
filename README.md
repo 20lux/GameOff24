@@ -7,3 +7,7 @@
 * Commit heaps and commit often (this loses less work) - there is no such thing as too many commits
 * Push your local changes to your remote branch to sync with GitHub
 * Create a pull request for git admin to review and marge or resolve conflicts
+
+## References
+https://www.dafont.com/droid.font?l[]=10&l[]=1
+https://polyhaven.com/a/overcast_soil_puresky
