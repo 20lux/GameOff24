@@ -2,18 +2,31 @@ Shader "Unlit/s_bakedTextures"
 {
     Properties
     { 
+        //baked texture
         [NoScaleOffset] _BakedTexture ("Baked Texture", 2D) = "white" {}
 
+        //normals
         [NoScaleOffset] _NormalTexture ("Normal Texture", 2D) = "blue" {}
         [HideInInspector] _NormalStrength("Normal Strength", Range(0,1)) = 1
         [HideInInspector] _NormalOffset("Normal Offset", Range(0,1)) = 0.1
 
+        //emission
         [NoScaleOffset] _EmissionTexture("Emission Texture", 2D) = "black" {}
+
+        //total light
+        [HideInInspector] _AmbientLightStrength("Ambient Light Strength", Range(0,1)) = 1
         
+        //additional light
         [HideInInspector] _AdditionalLightHueFalloff("Additional Light Hue Falloff", Range(0,360)) = 180
         [HideInInspector] _AdditionalLightSaturationFalloff("Additional Light Saturation Falloff", Float) = 1 
         [HideInInspector] _AdditionalLightIntensityCurve("Additional Light Intensity Curve", Range(0.01, 2.0)) = 1
-        [HideInInspector] _AmbientLightStrength("Ambient Light Strength", Range(0,1)) = 1
+
+        //halftone
+        [NoScaleOffset] _HalftonePattern("Halftone Pattern", 2D) = "white" {}
+        [HideInInspector] _HalftoneFalloffThreshold("Halftone Falloff Threshold", Float) = 0
+        [HideInInspector] _HalftoneLightThreshold("Halftone Light Threshold", Float) = 0
+        [HideInInspector] _HalftoneSoftness("Halftone Softness", Range(0.01,5)) = 1
+
     }
     SubShader
     {
@@ -24,24 +37,38 @@ Shader "Unlit/s_bakedTextures"
             
                 CBUFFER_START(UnityPerMaterial)
                     
+                //normals
                     float _NormalStrength;
                     float _NormalOffset;
 
+                    //total light
+                    float _AmbientLightStrength;
+
+                    //additional light
                     float _AdditionalLightHueFalloff;
                     float _AdditionalLightSaturationFalloff;
                     float _AdditionalLightIntensityCurve;
 
-                    float _AmbientLightStrength;
+                    //halftone
+                    float _HalftoneFalloffThreshold;
+                    float _HalftoneLightThreshold;
+                    float _HalftoneSoftness;
 
                 CBUFFER_END
             
+                //textures
                 TEXTURE2D(_BakedTexture);
                 TEXTURE2D(_NormalTexture);
                 TEXTURE2D(_EmissionTexture);
 
+                TEXTURE2D(_HalftonePattern);
+
+                //samplers
                 SAMPLER(sampler_BakedTexture);
                 SAMPLER(sampler_NormalTexture);
                 SAMPLER(sampler_EmissionTexture);
+
+                SAMPLER(sampler_HalftonePattern);
 
                 struct VertexInput
                 {
@@ -57,6 +84,8 @@ Shader "Unlit/s_bakedTextures"
                     float3 worldPos : TEXCOORD5;
 
                     float2 uvEmissionTexture : TEXCOORD6;
+
+                    float2 uvHalftonePattern : TEXCOORD7;
                 };
 
                 struct VertexOutput 
@@ -73,6 +102,8 @@ Shader "Unlit/s_bakedTextures"
                     float3 worldPos : TEXCOOR5;
 
                     float2 uvEmissionTexture : TEXCOORD6;
+
+                    float2 uvHalftonePattern : TEXCOORD7;
                 };
 
             ENDHLSL
@@ -112,12 +143,15 @@ Shader "Unlit/s_bakedTextures"
                     float3 tangent = normalize(v.tangent.xyz);
                     o.tangent = (tangent,1);
                     o.bitangent = normalize(cross(o.normal,o.tangent) * v.tangent.w);
+
+                    o.uvHalftonePattern = v.uvHalftonePattern;
                     return o;
                 }
 
                 float4 frag (VertexOutput IN) : SV_TARGET
                 {
                     float3 bakedTextureRGB = SAMPLE_TEXTURE2D(_BakedTexture, sampler_BakedTexture, IN.uvBakedTexture).rgb;
+
                     float3 emissionTextureRGB = SAMPLE_TEXTURE2D(_EmissionTexture, sampler_EmissionTexture, IN.uvEmissionTexture).rgb;
 
                     float3 tangentNormals = TextureToTangentNormal(
@@ -133,18 +167,32 @@ Shader "Unlit/s_bakedTextures"
                     half4 calculatedShadows = CalculateShadowMask(inputData);
                     half3 ambientLight = SampleSH(IN.normal) * _AmbientLightStrength;
 
+                    //halftone
+                    float halftoneTexture = SAMPLE_TEXTURE2D(_HalftonePattern, sampler_HalftonePattern, IN.uvHalftonePattern).r;
+
                     float3 additionalLightsMap = AdditionalLights(
                         IN.worldPos,
                         IN.normal,
                         calculatedShadows,
                         _AdditionalLightIntensityCurve,
                         _AdditionalLightHueFalloff,
-                        _AdditionalLightSaturationFalloff);
+                        _AdditionalLightSaturationFalloff,
+                        halftoneTexture,
+                        _HalftoneFalloffThreshold,
+                        _HalftoneLightThreshold,
+                        _HalftoneSoftness);
 
-                    float3 mainlightMap = MainLight(IN.worldPos, IN.normal, calculatedShadows);
+                    float3 mainlightMap = MainLight(
+                        IN.worldPos,
+                        IN.normal,
+                        calculatedShadows,
+                        halftoneTexture,
+                        _HalftoneFalloffThreshold,
+                        _HalftoneLightThreshold,
+                        _HalftoneSoftness);
                     
                     float3 totalLightMap = mainlightMap + additionalLightsMap + ambientLight;
-                    float3 albedo = bakedTextureRGB * totalLightMap + emissionTextureRGB;
+                    float3 albedo = (bakedTextureRGB * totalLightMap) + emissionTextureRGB;
                     return float4(albedo,1);
                 }
             

@@ -1,6 +1,28 @@
 #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Lighting.hlsl"
 
-float3 AdditionalLights(float3 worldPos, float3 worldNormal, half4 Shadowmask, float lightIntensityCurve, float3 lightHueFalloff, float lightSaturationFalloff)
+float HalfTone (float totalAtten, float halftoneTexture, float falloffThreshold, float lightThreshold,  float softness)
+{
+    float halftone = totalAtten * -1;
+    float halftoneEdge1 = Remap(halftone, float2(-1, 1), float2(lightThreshold - falloffThreshold, lightThreshold));
+    float halftoneEdge2 = halftoneEdge1 + softness;
+    float finalHalftone = smoothstep(halftoneEdge1, halftoneEdge2, halftoneTexture);
+    
+    return finalHalftone;
+
+}
+
+float3 AdditionalLights(
+float3 worldPos,
+float3 worldNormal,
+half4 Shadowmask,
+float lightIntensityCurve,
+float3 lightHueFalloff,
+float lightSaturationFalloff,
+float halftoneTexture,
+float halftoneFalloffThreshold,
+float halftoneLightThreshold,
+float halftoneSoftness
+)
 {
     int pixelLightCount = GetAdditionalLightsCount();
                     
@@ -24,27 +46,38 @@ float3 AdditionalLights(float3 worldPos, float3 worldNormal, half4 Shadowmask, f
         
         
         fullShadowMap = lightDirection * adjustAtten;
+        float halftoneShadowMap = HalfTone(fullShadowMap, halftoneTexture, halftoneFalloffThreshold, halftoneLightThreshold, halftoneSoftness);
+        
+        
         lightMapColorLerp = lerp(hueShiftLightColorRGB, light.color, fullShadowMap);
-        lightTexColoredShadows += lightMapColorLerp * fullShadowMap;
+        lightTexColoredShadows += lightMapColorLerp * halftoneShadowMap;
     }
 
     return lightTexColoredShadows;
 }
 
-float3 MainLight(float3 worldPos, float3 worldNormal, half4 Shadowmask)
+float3 MainLight(
+float3 worldPos,
+float3 worldNormal,
+half4 Shadowmask,
+float halftoneTexture,
+float halftoneFalloffThreshold,
+float halftoneLightThreshold,
+float halftoneSoftness
+)
 {
     float3 mainLightTex = (0, 0, 0);
-    float3 fullShadowMap = 0;
     
     Light mainLight = GetMainLight();
     float4 shadowCoord = TransformWorldToShadowCoord(worldPos);
     half mainShadow = MainLightRealtimeShadow(shadowCoord);
     
     float direction = saturate(dot(mainLight.direction, worldNormal));
-    float finalAtten = clamp(mainLight.distanceAttenuation * mainLight.shadowAttenuation, 0, 0.95);
+    float atten = mainLight.distanceAttenuation * mainLight.shadowAttenuation;
+    float totalAtten = atten * direction * mainShadow;
     
-    fullShadowMap = direction * finalAtten;
-    mainLightTex = mainLight.color * direction * finalAtten * mainShadow;
+    float halftoneShadowMap = HalfTone(totalAtten, halftoneTexture, halftoneFalloffThreshold, halftoneLightThreshold, halftoneSoftness);
+    mainLightTex = mainLight.color * halftoneShadowMap;
     
     return mainLightTex;
 }

@@ -4,8 +4,11 @@ using UnityEditor;
 public class SeemlessTextureGUI : ShaderGUI
 {
     private bool showTextureSettings = true;
-    private bool showLightingSettings = true;
 
+    private bool showTotalLightingSettings  = true;
+    private bool showAdditionalLightingSettings = true;
+
+    private bool showHalftoneSettings = true;
     public override void OnGUI(MaterialEditor materialEditor, MaterialProperty[] properties)
     {
         showTextureSettings = EditorGUILayout.Foldout(showTextureSettings, "Texture Settings");
@@ -21,31 +24,57 @@ public class SeemlessTextureGUI : ShaderGUI
             MaterialProperty colorHueOffset = FindProperty("_ColorHueOffset", properties);
             MaterialProperty colorValueOffset = FindProperty("_ColorValueOffset", properties);
 
-            materialEditor.ShaderProperty(seemlessPattern, seemlessPattern.displayName);
-            materialEditor.ShaderProperty(texturePattern, texturePattern.displayName);
+            materialEditor.ShaderProperty(seemlessPattern, new GUIContent(seemlessPattern.displayName, "Use black & white seemless mask."));
+            materialEditor.ShaderProperty(texturePattern, new GUIContent(texturePattern.displayName, "Use greyscale mask"));
             materialEditor.ShaderProperty(seemlessPatternScale, seemlessPatternScale.displayName);
             materialEditor.ShaderProperty(seemlessTextureScale, seemlessTextureScale.displayName);
             materialEditor.ShaderProperty(seemlessPatternNormalOffset, seemlessPatternNormalOffset.displayName);
             materialEditor.ShaderProperty(seemlessPatternNormalStrength, seemlessPatternNormalStrength.displayName);
-            materialEditor.ShaderProperty(textureColor, textureColor.displayName);
-            materialEditor.ShaderProperty(colorHueOffset, colorHueOffset.displayName);
-            materialEditor.ShaderProperty(colorValueOffset, colorValueOffset.displayName);
+            materialEditor.ShaderProperty(textureColor, new GUIContent(textureColor.displayName, "Pick the average color"));
+            materialEditor.ShaderProperty(colorHueOffset, new GUIContent(colorHueOffset.displayName, "Uses the Texture Color as the centre to pick two new colors"));
+            materialEditor.ShaderProperty(colorValueOffset, new GUIContent(colorValueOffset.displayName, "Increases/Decreases contrast of the Seemless Mask"));
         }
 
         EditorGUILayout.Space();
 
-        showLightingSettings = EditorGUILayout.Foldout(showLightingSettings, "Lighting Settings");
-        if (showLightingSettings)
+        showTotalLightingSettings = EditorGUILayout.Foldout(showTotalLightingSettings, "Total Lighting Settings");
+        if (showTotalLightingSettings)
+        {
+            MaterialProperty ambientLightStrength = FindProperty("_AmbientLightStrength", properties);
+
+            materialEditor.ShaderProperty(ambientLightStrength, new GUIContent(ambientLightStrength.displayName, "Interpolates the shade color between black and the ambient color"));
+        }
+
+        EditorGUILayout.Space();
+
+        showAdditionalLightingSettings = EditorGUILayout.Foldout(showAdditionalLightingSettings, "Additional Lighting Settings");
+        if (showAdditionalLightingSettings)
         {
             MaterialProperty additionalLightHueFalloff = FindProperty("_AdditionalLightHueFalloff", properties);
             MaterialProperty additionalLightSaturationFalloff = FindProperty("_AdditionalLightSaturationFalloff", properties);
             MaterialProperty additionalLightIntensityCurve = FindProperty("_AdditionalLightIntensityCurve", properties);
-            MaterialProperty ambientLightStrength = FindProperty("_AmbientLightStrength", properties);
 
-            materialEditor.ShaderProperty(additionalLightHueFalloff, additionalLightHueFalloff.displayName);
-            materialEditor.ShaderProperty(additionalLightSaturationFalloff, additionalLightSaturationFalloff.displayName);
-            materialEditor.ShaderProperty(additionalLightIntensityCurve, additionalLightIntensityCurve.displayName);
-            materialEditor.ShaderProperty(ambientLightStrength, ambientLightStrength.displayName);
+            materialEditor.ShaderProperty(additionalLightHueFalloff, new GUIContent(additionalLightHueFalloff.displayName, "Controls the hue contrast as the light falls off"));
+            materialEditor.ShaderProperty(additionalLightSaturationFalloff, new GUIContent(additionalLightSaturationFalloff.displayName, "Controls the saturation contrast as the light falls off. Mainly used when the light color is desaturated"));
+            materialEditor.ShaderProperty(additionalLightIntensityCurve, new GUIContent(additionalLightIntensityCurve.displayName, "Controls hows the light intensity interpolates"));
+        }
+        
+        EditorGUILayout.Space();
+
+        showHalftoneSettings = EditorGUILayout.Foldout(showHalftoneSettings, "Halftone Settings");
+        if (showHalftoneSettings)
+        {
+            MaterialProperty halftonePattern = FindProperty("_HalftonePattern", properties);
+            MaterialProperty halftonePatternScale = FindProperty("_HalftonePatternScale", properties);
+            MaterialProperty halftoneFalloffThreshold = FindProperty("_HalftoneFalloffThreshold", properties);
+            MaterialProperty halftoneLightThreshold = FindProperty("_HalftoneLightThreshold", properties);
+            MaterialProperty halftoneSoftness = FindProperty("_HalftoneSoftness", properties);
+
+            materialEditor.ShaderProperty(halftonePattern, new GUIContent(halftonePattern.displayName, "Use black and white texture pattern"));
+            materialEditor.ShaderProperty(halftonePatternScale, halftonePatternScale.displayName);
+            materialEditor.ShaderProperty(halftoneFalloffThreshold, halftoneFalloffThreshold.displayName);
+            materialEditor.ShaderProperty(halftoneLightThreshold, halftoneLightThreshold.displayName);
+            materialEditor.ShaderProperty(halftoneSoftness, halftoneSoftness.displayName);
         }
     }
 }
