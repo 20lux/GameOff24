@@ -10,6 +10,8 @@ public class BakedTextureGUI : ShaderGUI
 
     private bool showHalftoneSettings = true;
 
+    private bool showHighlightingSettings = true;
+
     public override void OnGUI(MaterialEditor materialEditor, MaterialProperty[] properties)
     {
         showTextureSettings = EditorGUILayout.Foldout(showTextureSettings, "Texture Settings");
@@ -62,6 +64,22 @@ public class BakedTextureGUI : ShaderGUI
             materialEditor.ShaderProperty(halftoneFalloffThreshold, halftoneFalloffThreshold.displayName);
             materialEditor.ShaderProperty(halftoneLightThreshold, halftoneLightThreshold.displayName);
             materialEditor.ShaderProperty(halftoneSoftness, halftoneSoftness.displayName);
+        }
+
+        EditorGUILayout.Space();
+
+        showHighlightingSettings = EditorGUILayout.Foldout(showHighlightingSettings, "Highlighting Settings");
+        if (showHighlightingSettings)
+        {
+            MaterialProperty highlightColFreq = FindProperty("_HighlightColFreq", properties);
+            MaterialProperty highlightColMag = FindProperty("_HighlightColMag", properties);
+            MaterialProperty highlightPosFreq = FindProperty("_HighlightPosFreq", properties);
+            MaterialProperty highlightPosMag = FindProperty("_HighlightPosMag", properties);
+
+            materialEditor.ShaderProperty(highlightColFreq, highlightColFreq.displayName);
+            materialEditor.ShaderProperty(highlightColMag, highlightColMag.displayName);
+            materialEditor.ShaderProperty(highlightPosFreq, highlightColMag.displayName);
+            materialEditor.ShaderProperty(highlightPosMag, highlightPosMag.displayName);
         }
     }
 }
