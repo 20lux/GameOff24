@@ -1,18 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-2849458198618938903
-MonoBehaviour:
-  m_ObjectHideFlags: 11
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  version: 9
 --- !u!21 &2100000
 Material:
   serializedVersion: 8
@@ -20,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: m_seemlessTexture
+  m_Name: M_tentacle
   m_Shader: {fileID: 4800000, guid: 9401ccaa3f153a74db749a29a2e0ede5, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -37,10 +24,6 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
-    - _BakedTexture:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     - _BaseMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -65,12 +48,8 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _EmissionTexture:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     - _HalftonePattern:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 36d69e3481b51224fa7a1c87eb7737f8, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
@@ -78,10 +57,6 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _NormalTexture:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
@@ -120,9 +95,9 @@ Material:
     m_Ints: []
     m_Floats:
     - _AddPrecomputedVelocity: 0
-    - _AdditionalLightHueFalloff: 0
-    - _AdditionalLightIntensityCurve: 0.43
-    - _AdditionalLightSaturationFalloff: 2.08
+    - _AdditionalLightHueFalloff: 180
+    - _AdditionalLightIntensityCurve: 0.01
+    - _AdditionalLightSaturationFalloff: 1
     - _AlphaClip: 0
     - _AlphaToMask: 0
     - _AmbientLightStrength: 0
@@ -131,8 +106,8 @@ Material:
     - _BumpScale: 1
     - _ClearCoatMask: 0
     - _ClearCoatSmoothness: 0
-    - _ColorHueOffset: 12
-    - _ColorValueOffset: 0.3
+    - _ColorHueOffset: 13
+    - _ColorValueOffset: 0.5
     - _Cull: 2
     - _Cutoff: 0.5
     - _DetailAlbedoMapScale: 1
@@ -143,21 +118,18 @@ Material:
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
-    - _HalftoneFalloffThreshold: 8
-    - _HalftoneLightOffset: 1.29
-    - _HalftoneLightThreshold: 5
-    - _HalftoneSoftness: 1.4
+    - _HalftoneFalloffThreshold: 7.55
+    - _HalftoneLightThreshold: 7.33
+    - _HalftoneSoftness: 0.01
     - _Metallic: 0
-    - _NormalOffset: 0.1
-    - _NormalStrength: 1
     - _OcclusionStrength: 1
     - _Parallax: 0.005
     - _QueueOffset: 0
     - _ReceiveShadows: 1
-    - _SeemlessPatternNormalOffset: 0.236
-    - _SeemlessPatternNormalStrength: 1
-    - _SeemlessPatternScale: 0.49
-    - _SeemlessTextureScale: -1.78
+    - _SeemlessPatternNormalOffset: 0
+    - _SeemlessPatternNormalStrength: 0
+    - _SeemlessPatternScale: 1
+    - _SeemlessTextureScale: 1
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
@@ -174,3 +146,16 @@ Material:
     - _TextureColor: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
+--- !u!114 &6882817991941027315
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 9

@@ -9,7 +9,7 @@ public class BasicInverseKinematics : MonoBehaviour
     public Transform target; // position where the end of the chain tries to reach
     public Transform pole; //controls the middle chain's direction
 
-    public int iterations = 10; //controls the accuracy of the IK calculations
+    public int iterations = 10; //controls the accuracy of the IK calculations per frame.
     public float delta = 0.001f; //small tolerance to decide when to stop adjusting
 
     [Range(0,1)] public float snapBackStrength = 1.0f; //how much the bones snap back to their original positions
