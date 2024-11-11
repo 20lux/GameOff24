@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.InputSystem;
 using TMPro;
 using UnityEngine.UI;
 using System.Text;
@@ -96,6 +95,7 @@ namespace BoomMicCity.PlayerController
 
         // Internal Variables
         private Rigidbody rb;
+        private CapsuleCollider capsule;
         private bool isSitting;
         private bool isInspecting;
 
@@ -106,6 +106,7 @@ namespace BoomMicCity.PlayerController
         private void Awake()
         {
             rb = GetComponent<Rigidbody>();
+            capsule = GetComponent<CapsuleCollider>();
             rb.interpolation = RigidbodyInterpolation.Interpolate;
 
             // Set internal variables.
@@ -166,7 +167,7 @@ namespace BoomMicCity.PlayerController
 
             if (grounded)
             {
-                if (InputManager.Jump.WasPressedThisFrame())
+                if (InputManager.Jump.IsPressed())
                 {
                     Debug.Log("Jump");
                     ApplyJumpForce();
@@ -435,11 +436,11 @@ namespace BoomMicCity.PlayerController
             sb.Append($"falling|{!IsGrounded()}\n");
 
             RaycastHit[] results = new RaycastHit[10];
-            Physics.RaycastNonAlloc(transform.position, -transform.up, results, 2f);
+            int hits = Physics.SphereCastNonAlloc(transform.position, capsule.radius +0.01f, -transform.up, results, (capsule.height/2)+0.05f);
             float slope = 0;
-            if ( results.Length > 0 )
+            if ( hits > 0 )
             {
-                slope = Vector3.Dot(transform.up,results[0].normal);
+                slope = Vector3.Dot(transform.up, results[0].normal);
             }
             
             sb.Append($"slope|{slope}\n");
