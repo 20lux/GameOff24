@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 [RequireComponent(typeof(BoxCollider))]
 public class SceneChanger : MonoBehaviour
 {
+    private Vector3 currentPlayerPosition;
     public enum Scene 
     {
         None,
@@ -24,6 +25,9 @@ public class SceneChanger : MonoBehaviour
 
     void OnTriggerEnter(Collider col)
     {
+        col.gameObject.transform.position = currentPlayerPosition;
+        // put player in position in new loaded scene
+
         if (col.CompareTag("Player"))
         {
             switch (scene)

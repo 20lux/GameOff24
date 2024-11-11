@@ -17,6 +17,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/03_Forest.unity
     guid: bd0329e6e19b7aa41a0f62b09693b089
+  - enabled: 1
+    path: Assets/Scenes/04_Cliff.unity
+    guid: 0ec4a1aa8ec763940935309be323a075
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0
