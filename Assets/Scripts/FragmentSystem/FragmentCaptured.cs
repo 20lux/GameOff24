@@ -6,28 +6,43 @@ namespace TheFall.FragmentController
     {
         [Tooltip("Objects to animate after fragment is captured - usually platforms")]
         [SerializeField] private Animator[] activateObjects;
+        
         [Tooltip("Inactive objects to activate once fragment is captured - usually platforms")]
         [SerializeField] private GameObject[] inactiveObjects;
 
         void Start()
         {
-            for (int h = 0; h <inactiveObjects.Length; h++)
+            if (inactiveObjects.Length != 0)
             {
-                inactiveObjects[h].SetActive(false);
+                for (int h = 0; h <inactiveObjects.Length; h++)
+                {
+                    inactiveObjects[h].SetActive(false);
+                }
             }
         }
 
         public void OnFragmentCapture()
         {
-            for (int i = 0; i < activateObjects.Length; i++)
+            if (inactiveObjects.Length != 0)
             {
-                activateObjects[i].SetBool("Activate", true);
+                for (int j = 0; j < inactiveObjects.Length; j++)
+                {
+                    inactiveObjects[j].SetActive(true); // Can also have shader trigger here instead
+                }
             }
 
-            for (int j = 0; j < inactiveObjects.Length; j++)
+            if (activateObjects.Length != 0)
             {
-                inactiveObjects[j].SetActive(true); // Can also have shader trigger here instead
+                for (int i = 0; i < activateObjects.Length; i++)
+                {
+                    activateObjects[i].SetBool("Activate", true);
+                }
             }
+        }
+
+        public void DestroyFragment()
+        {
+            Destroy(gameObject);
         }
     }
 }
