@@ -9,12 +9,14 @@ public class InputManager : MonoBehaviour
     [SerializeField] private InputActionReference escapeAction;
     [SerializeField] private InputActionReference celestialLeft;
     [SerializeField] private InputActionReference celestialRight;
+    [SerializeField] private InputActionAsset inputActions;
 
-    // Boolean properties for easy access
     public static bool GetInteractDown => Instance?.interactAction.action.WasPressedThisFrame() ?? false;
     public static bool GetEscapeDown => Instance?.escapeAction.action.WasPressedThisFrame() ?? false;
     public static bool GetCelestialLeft => Instance?.celestialLeft.action.IsPressed() ?? false;
     public static bool GetCelestialRight => Instance?.celestialRight.action.IsPressed() ?? false;
+    public static Vector2 GetMove => Instance?.inputActions.FindAction("Move").ReadValue<Vector2>() ?? Vector2.zero;
+    public static bool GetJump => Instance?.inputActions.FindAction("Jump").ReadValue<bool>() ?? false;
 
 
     private void Awake()
@@ -31,26 +33,11 @@ public class InputManager : MonoBehaviour
         //DontDestroyOnLoad(gameObject);
     }
 
-    public static InputAction InteractAction => Instance.interactAction.action;
-    public static InputAction EscapeAction => Instance.escapeAction.action;
-    public static InputAction CelestialLeft => Instance.celestialLeft.action;
-    public static InputAction CelestialRight => Instance.celestialRight.action;
-
-    private void OnEnable()
-    {
-        interactAction.action.Enable();
-        escapeAction.action.Enable();
-
-        celestialLeft.action.Enable();
-        Debug.Log("celestialLeft enabled");
-        celestialRight.action.Enable();
-    }
-
-    private void OnDisable()
-    {
-        interactAction.action.Disable();
-        escapeAction.action.Disable();
-        celestialLeft.action.Disable();
-        celestialRight.action.Disable();
-    }
+    public static InputAction Interact => Instance.inputActions.FindAction("Interact");
+    public static InputAction Escape => Instance.inputActions.FindAction("Escape");
+    public static InputAction CelestialLeft => Instance.inputActions.FindAction("CelestialLeft");
+    public static InputAction CelestialRight => Instance.inputActions.FindAction("CelestialRight");
+    public static InputAction Move => Instance.inputActions.FindAction("Move");
+    public static InputAction Sprint => Instance.inputActions.FindAction("Sprint");
+    public static InputAction Jump => Instance.inputActions.FindAction("Jump");
 }
