@@ -24,6 +24,7 @@ Shader "Unlit/s_seemlessTextures"
 
         //halftone
         [NoScaleOffset] _HalftonePattern("Halftone Pattern", 2D) = "white" {}
+        [HideInInspector] _HalftonePatternScale("Halftone Pattern Scale", Float) = 1
         [HideInInspector] _HalftoneFalloffThreshold("Halftone Falloff Threshold", Float) = 8
         [HideInInspector] _HalftoneLightThreshold("Halftone Light Threshold", Float) = 5
         [HideInInspector] _HalftoneSoftness("Halftone Softness", Range(0.01,5)) = 1
@@ -55,6 +56,7 @@ Shader "Unlit/s_seemlessTextures"
                     float _AdditionalLightIntensityCurve;
 
                     //halftone
+                    float _HalftonePatternScale;
                     float _HalftoneFalloffThreshold;
                     float _HalftoneLightThreshold;
                     float _HalftoneSoftness;
@@ -184,6 +186,7 @@ Shader "Unlit/s_seemlessTextures"
                     float3 textureSampling = TextureSampling(IN.uvSeemlessPattern, IN.uvTexturePattern, ambientLight);
 
                     //halftone
+                    IN.uvHalftonePattern *= _HalftonePatternScale;
                     float halftoneTexture = SAMPLE_TEXTURE2D(_HalftonePattern, sampler_HalftonePattern, IN.uvHalftonePattern).r;
 
                     float3 additionalLightsMap = AdditionalLights(

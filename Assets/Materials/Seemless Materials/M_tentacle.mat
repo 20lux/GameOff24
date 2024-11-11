@@ -120,6 +120,7 @@ Material:
     - _GlossyReflections: 0
     - _HalftoneFalloffThreshold: 7.55
     - _HalftoneLightThreshold: 7.33
+    - _HalftonePatternScale: 1
     - _HalftoneSoftness: 0.01
     - _Metallic: 0
     - _OcclusionStrength: 1
