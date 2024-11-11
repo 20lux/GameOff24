@@ -1541,6 +1541,7 @@ MonoBehaviour:
   escapeAction: {fileID: 3573876009324036763, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   celestialLeft: {fileID: 1120369429361536294, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   celestialRight: {fileID: -5042881521485212715, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  moveAction: {fileID: 0}
 --- !u!4 &102754260
 Transform:
   m_ObjectHideFlags: 0
@@ -5027,6 +5028,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 982609455826973843, guid: e1945d0e49bed444b8da414f187803da, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 982609455826973843, guid: e1945d0e49bed444b8da414f187803da, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 982609455826973843, guid: e1945d0e49bed444b8da414f187803da, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1055270108988332596, guid: e1945d0e49bed444b8da414f187803da, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.1552248
@@ -5074,6 +5087,14 @@ PrefabInstance:
     - target: {fileID: 3891666346001932807, guid: e1945d0e49bed444b8da414f187803da, type: 3}
       propertyPath: m_Name
       value: PlayerController
+      objectReference: {fileID: 0}
+    - target: {fileID: 4990551714433581360, guid: e1945d0e49bed444b8da414f187803da, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4990551714433581360, guid: e1945d0e49bed444b8da414f187803da, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6692388926247183842, guid: e1945d0e49bed444b8da414f187803da, type: 3}
       propertyPath: interactionLayerMask.m_Bits
