@@ -1,9 +1,10 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+[RequireComponent(typeof(BoxCollider))]
 public class SceneChanger : MonoBehaviour
 {
-    enum Scene 
+    public enum Scene 
     {
         None,
         Home,
@@ -12,7 +13,14 @@ public class SceneChanger : MonoBehaviour
         End
     }
 
-    private Scene scene;
+    [Tooltip("Select scene for the trigger to transition to")]
+    public Scene scene;
+    private BoxCollider bc;
+
+    void Start()
+    {
+        bc.isTrigger = true;
+    }
 
     void OnTriggerEnter(Collider col)
     {
