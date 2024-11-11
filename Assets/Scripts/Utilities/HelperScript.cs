@@ -41,4 +41,9 @@ public class HelperScript
         x = Square(x);
         return x;
     }
+
+    public static float Saturate(float x)
+    {
+        return Mathf.Max(0, Mathf.Min(1, x));
+    }
 }
