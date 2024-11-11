@@ -20,6 +20,7 @@ public class SceneChanger : MonoBehaviour
 
     void Start()
     {
+        bc = GetComponent<BoxCollider>();
         bc.isTrigger = true;
     }
 
