@@ -55,6 +55,59 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!1 &7231460898040049030
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6025612983328533743}
+  - component: {fileID: 8023426822742245791}
+  m_Layer: 0
+  m_Name: PlayerStaticParent
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6025612983328533743
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7231460898040049030}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.5059688, y: -0.49395907, z: -0.49395815, w: 0.50596976}
+  m_LocalPosition: {x: 0.05, y: 0.01, z: 2.02}
+  m_LocalScale: {x: 0.017807676, y: 0.017807677, z: 0.017807676}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3486271314520053704}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &8023426822742245791
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7231460898040049030}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 53.366695, y: 41.1969, z: 51.77878}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &1694182025101801999
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -121,7 +174,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 2874221085171215815, guid: ec67698583c28ca429e2e27bbcfcdee6, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6025612983328533743}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ec67698583c28ca429e2e27bbcfcdee6, type: 3}
 --- !u!4 &3486271314520053704 stripped
