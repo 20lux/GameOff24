@@ -16,11 +16,6 @@ public class Interactable : MonoBehaviour
         }
     }
 
-    private void Start()
-    {
-        //for checkbox use
-    }
-
     public void Interact()
     {
         onInteraction?.Invoke();
