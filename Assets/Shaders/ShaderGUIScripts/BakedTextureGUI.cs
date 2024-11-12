@@ -71,12 +71,19 @@ public class BakedTextureGUI : ShaderGUI
         showHighlightingSettings = EditorGUILayout.Foldout(showHighlightingSettings, "Highlighting Settings");
         if (showHighlightingSettings)
         {
+            MaterialProperty isHighlighting = FindProperty("_IsHighlighting", properties);
+
+
             MaterialProperty highlightSinOffset = FindProperty("_HighlightSinOffset", properties);
 
             MaterialProperty highlightColFreq = FindProperty("_HighlightColFreq", properties);
             MaterialProperty highlightColMag = FindProperty("_HighlightColMag", properties);
             MaterialProperty highlightPosFreq = FindProperty("_HighlightPosFreq", properties);
             MaterialProperty highlightPosMag = FindProperty("_HighlightPosMag", properties);
+
+            bool isHighlightingBool = isHighlighting.floatValue > 0.5f;
+            isHighlightingBool = EditorGUILayout.Toggle("Is Highlighting", isHighlightingBool);
+            isHighlighting.floatValue = isHighlightingBool ? 1.0f : 0.0f;
 
             materialEditor.ShaderProperty(highlightSinOffset, highlightSinOffset.displayName);
 

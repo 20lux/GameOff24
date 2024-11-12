@@ -28,6 +28,8 @@ Shader "Unlit/s_bakedTextures"
         [HideInInspector] _HalftoneSoftness("Halftone Softness", Range(0.01,5)) = 1
 
         //highlighting
+        [HideInInspector] _IsHighlighting("Is Highlighting", Float) = 0
+
         [HideInInspector] _HighlightSinOffset("Sin Offset", Float) = 0.5
 
         [HideInInspector] _HighlightColFreq("Color Frequency", Float) = 1
@@ -65,6 +67,8 @@ Shader "Unlit/s_bakedTextures"
                     float _HalftoneSoftness;
 
                     //highlighting
+                    bool _IsHighlighting;
+
                     float _HighlightSinOffset;
 
                     float _HighlightColFreq;
@@ -157,7 +161,7 @@ Shader "Unlit/s_bakedTextures"
                 {
                     v2f o;
 
-                    v.position = PulsingBloom(v.position, _HighlightPosFreq, _HighlightPosMag, _HighlightSinOffset);
+                    v.position = PulsingBloom(_IsHighlighting, v.position, _HighlightPosFreq, _HighlightPosMag, _HighlightSinOffset);
                     o.worldPos = mul(unity_ObjectToWorld, v.position).xyz;
                     o.position = TransformObjectToHClip(v.position);
 
@@ -222,7 +226,7 @@ Shader "Unlit/s_bakedTextures"
                     float3 totalLightMap = mainlightMap + additionalLightsMap + ambientLight;
                     float4 albedo = float4((bakedTextureRGB * totalLightMap) + emissionTextureRGB, albedo.a);
 
-                    albedo = PulsingBloom(albedo, _HighlightColFreq, _HighlightColMag, _HighlightSinOffset);
+                    albedo = PulsingBloom(_IsHighlighting, albedo, _HighlightColFreq, _HighlightColMag, _HighlightSinOffset);
                     return albedo;
                 }
             
@@ -246,7 +250,7 @@ Shader "Unlit/s_bakedTextures"
                 v2f vert (appdata_full v)
                 {
                     v2f o;
-                    v.position = PulsingBloom(v.position, _HighlightPosFreq, _HighlightPosMag, _HighlightSinOffset);
+                    v.position = PulsingBloom(_IsHighlighting, v.position, _HighlightPosFreq, _HighlightPosMag, _HighlightSinOffset);
                     o.position = TransformObjectToHClip(v.position);
                     return o;
                 }
