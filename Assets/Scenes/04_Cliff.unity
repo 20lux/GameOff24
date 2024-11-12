@@ -4049,7 +4049,7 @@ PrefabInstance:
       objectReference: {fileID: 1037874326}
     - target: {fileID: 3709737081533321766, guid: 1e2d334257f95854486b4d755cc6c986, type: 3}
       propertyPath: m_Name
-      value: Fall Boundary
+      value: FallBoundary
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
