@@ -107,7 +107,7 @@ namespace BoomMicCity.PlayerController
         {
             rb = GetComponent<Rigidbody>();
             capsule = GetComponent<CapsuleCollider>();
-            rb.interpolation = RigidbodyInterpolation.Interpolate;
+            rb.interpolation = RigidbodyInterpolation.None;
 
             // Set internal variables.
             playerCamera.fieldOfView = fov;
