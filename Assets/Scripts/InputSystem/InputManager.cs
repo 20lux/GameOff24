@@ -5,23 +5,22 @@ public class InputManager : MonoBehaviour
 {
     public static InputManager Instance { get; private set; }
 
-    [SerializeField] private InputActionReference interactAction;
-    [SerializeField] private InputActionReference escapeAction;
-    [SerializeField] private InputActionReference celestialLeft;
-    [SerializeField] private InputActionReference celestialRight;
     [SerializeField] private InputActionAsset inputActions;
 
-    public static bool GetInteractDown => Instance?.interactAction.action.WasPressedThisFrame() ?? false;
-    public static bool GetEscapeDown => Instance?.escapeAction.action.WasPressedThisFrame() ?? false;
-    public static bool GetCelestialLeft => Instance?.celestialLeft.action.IsPressed() ?? false;
-    public static bool GetCelestialRight => Instance?.celestialRight.action.IsPressed() ?? false;
+    public static bool GetInteractDown => Instance?.inputActions.FindAction("Interact").WasPressedThisFrame() ?? false;
+    public static bool GetEscapeDown => Instance?.inputActions.FindAction("Escape").WasPressedThisFrame() ?? false;
+    public static bool GetCelestialLeft => Instance?.inputActions.FindAction("CelestialLeft").IsPressed() ?? false;
+    public static bool GetCelestialRight => Instance?.inputActions.FindAction("CelestialRight").IsPressed() ?? false;
     public static Vector2 GetMove => Instance?.inputActions.FindAction("Move").ReadValue<Vector2>() ?? Vector2.zero;
-    public static bool GetJump => Instance?.inputActions.FindAction("Jump").ReadValue<bool>() ?? false;
+    public static bool GetSprintDown => Instance?.inputActions.FindAction("Sprint").WasPressedThisFrame() ?? false;
+    public static bool GetSprint => Instance?.inputActions.FindAction("Sprint").IsPressed() ?? false;
+    public static bool GetJumpDown => Instance?.inputActions.FindAction("Jump").WasPressedThisFrame() ?? false;
+    public static bool GetJump => Instance?.inputActions.FindAction("Jump").IsPressed() ?? false;
 
 
     private void Awake()
     {
-        interactAction.action.actionMap.Enable();
+        inputActions.Enable();
         if (Instance != null && Instance != this)
         {
             Destroy(gameObject);
