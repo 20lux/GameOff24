@@ -28,6 +28,10 @@ Shader "Unlit/s_bakedTextures"
         [HideInInspector] _HalftoneSoftness("Halftone Softness", Range(0.01,5)) = 1
 
         //highlighting
+        [HideInInspector] _IsHighlighting("Is Highlighting", Float) = 0
+
+        [HideInInspector] _HighlightSinOffset("Sin Offset", Float) = 0.5
+
         [HideInInspector] _HighlightColFreq("Color Frequency", Float) = 1
         [HideInInspector] _HighlightColMag("Color Magnitude", Float) = 1
 
@@ -63,6 +67,10 @@ Shader "Unlit/s_bakedTextures"
                     float _HalftoneSoftness;
 
                     //highlighting
+                    bool _IsHighlighting;
+
+                    float _HighlightSinOffset;
+
                     float _HighlightColFreq;
                     float _HighlightColMag;
 
@@ -85,7 +93,7 @@ Shader "Unlit/s_bakedTextures"
 
                 SAMPLER(sampler_HalftonePattern);
 
-                struct VertexInput_full
+                struct appdata_full
                 {
                     float4 position : POSITION;
 
@@ -103,12 +111,11 @@ Shader "Unlit/s_bakedTextures"
                     float2 uvHalftonePattern : TEXCOORD7;
                 };
 
-                struct VertexInput_current
+                struct appdata_current
                 {
-                    float3 uvHighlight : TEXCOORD8;
                 };
 
-                struct VertexOutput 
+                struct v2f 
                 {
                     float4 position : SV_POSITION;
 
@@ -124,8 +131,6 @@ Shader "Unlit/s_bakedTextures"
                     float2 uvEmissionTexture : TEXCOORD6;
 
                     float2 uvHalftonePattern : TEXCOORD7;
-
-                    float3 uvHighlight : TEXCOORD8;
                 };
 
 
@@ -152,13 +157,14 @@ Shader "Unlit/s_bakedTextures"
             // This is used during shadow map generation to differentiate between directional and punctual light shadows, as they use different formulas to apply Normal Bias
             #pragma multi_compile_vertex _ _CASTING_PUNCTUAL_LIGHT_SHADOW
 
-                VertexOutput vert (VertexInput_full v)
+                v2f vert (appdata_full v)
                 {
-                    VertexOutput o;
+                    v2f o;
 
-                    o.uvHighlight = PulsingBloom(v.position, _HighlightPosFreq, _HighlightPosMag);
-                    o.position = TransformObjectToHClip(o.uvHighlight);
-                    o.worldPos = mul(unity_ObjectToWorld, float4(v.position.xyz, 1.0)).xyz;
+                    v.position = PulsingBloom(_IsHighlighting, v.position, _HighlightPosFreq, _HighlightPosMag, _HighlightSinOffset);
+                    o.worldPos = mul(unity_ObjectToWorld, v.position).xyz;
+                    o.position = TransformObjectToHClip(v.position);
+
 
                     o.uvBakedTexture = v.uvBakedTexture;
                     o.uvNormalTexture = v.uvNormalTexture;
@@ -173,31 +179,33 @@ Shader "Unlit/s_bakedTextures"
                     return o;
                 }
 
-                float4 frag (VertexOutput IN) : SV_TARGET
+                float4 frag (v2f i) : SV_TARGET
                 {
-                    float3 bakedTextureRGB = SAMPLE_TEXTURE2D(_BakedTexture, sampler_BakedTexture, IN.uvBakedTexture).rgb;
+                    float3 bakedTextureRGB = SAMPLE_TEXTURE2D(_BakedTexture, sampler_BakedTexture, i.uvBakedTexture).rgb;
 
-                    float3 emissionTextureRGB = SAMPLE_TEXTURE2D(_EmissionTexture, sampler_EmissionTexture, IN.uvEmissionTexture).rgb;
+                    float3 emissionTextureRGB = SAMPLE_TEXTURE2D(_EmissionTexture, sampler_EmissionTexture, i.uvEmissionTexture).rgb;
 
                     float3 tangentNormals = TextureToTangentNormal(
                         _NormalTexture,
                         sampler_NormalTexture,
                         _NormalStrength,
-                        _NormalOffset, IN.uvNormalTexture,
+                        _NormalOffset, i.uvNormalTexture,
                         1);
-                    IN.normal = TangentToWorldNormal(tangentNormals, IN.tangent, IN.bitangent, IN.normal);
+                    i.normal = TangentToWorldNormal(tangentNormals, i.tangent, i.bitangent, i.normal);
                     
                     
                     InputData inputData = (InputData)0;
+
                     half4 calculatedShadows = CalculateShadowMask(inputData);
-                    half3 ambientLight = SampleSH(IN.normal) * _AmbientLightStrength;
+
+                    half3 ambientLight = SampleSH(i.normal) * _AmbientLightStrength;
 
                     //halftone
-                    float halftoneTexture = SAMPLE_TEXTURE2D(_HalftonePattern, sampler_HalftonePattern, IN.uvHalftonePattern).r;
+                    float halftoneTexture = SAMPLE_TEXTURE2D(_HalftonePattern, sampler_HalftonePattern, i.uvHalftonePattern).r;
 
                     float3 additionalLightsMap = AdditionalLights(
-                        IN.worldPos,
-                        IN.normal,
+                        i.worldPos,
+                        i.normal,
                         calculatedShadows,
                         _AdditionalLightIntensityCurve,
                         _AdditionalLightHueFalloff,
@@ -208,9 +216,8 @@ Shader "Unlit/s_bakedTextures"
                         _HalftoneSoftness);
 
                     float3 mainlightMap = MainLight(
-                        IN.worldPos,
-                        IN.normal,
-                        calculatedShadows,
+                        i.worldPos,
+                        i.normal,
                         halftoneTexture,
                         _HalftoneFalloffThreshold,
                         _HalftoneLightThreshold,
@@ -219,7 +226,7 @@ Shader "Unlit/s_bakedTextures"
                     float3 totalLightMap = mainlightMap + additionalLightsMap + ambientLight;
                     float4 albedo = float4((bakedTextureRGB * totalLightMap) + emissionTextureRGB, albedo.a);
 
-                    albedo = PulsingBloom(albedo, _HighlightColFreq, _HighlightColMag);
+                    albedo = PulsingBloom(_IsHighlighting, albedo, _HighlightColFreq, _HighlightColMag, _HighlightSinOffset);
                     return albedo;
                 }
             
@@ -240,14 +247,14 @@ Shader "Unlit/s_bakedTextures"
                 }
 
 
-                //nessacary boilerplate 
-                VertexOutput vert (VertexInput_full v)
+                v2f vert (appdata_full v)
                 {
-                    VertexOutput o; 
+                    v2f o;
+                    v.position = PulsingBloom(_IsHighlighting, v.position, _HighlightPosFreq, _HighlightPosMag, _HighlightSinOffset);
                     o.position = TransformObjectToHClip(v.position);
                     return o;
                 }
-                float4 frag (VertexOutput IN) : SV_TARGET 
+                float4 frag (v2f i) : SV_TARGET 
                 {
                     return float4(0,0,0,0);
                 }

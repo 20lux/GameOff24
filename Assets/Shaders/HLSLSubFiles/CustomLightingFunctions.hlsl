@@ -59,7 +59,6 @@ float halftoneSoftness
 float3 MainLight(
 float3 worldPos,
 float3 worldNormal,
-half4 Shadowmask,
 float halftoneTexture,
 float halftoneFalloffThreshold,
 float halftoneLightThreshold,

@@ -204,7 +204,6 @@ Shader "Unlit/s_seemlessTextures"
                     float3 mainlightMap = MainLight(
                         IN.worldPos,
                         IN.normal,
-                        calculatedShadows,
                         halftoneTexture,
                         _HalftoneFalloffThreshold,
                         _HalftoneLightThreshold,
