@@ -2,9 +2,13 @@ using UnityEngine;
 
 public class EyeballTracker : MonoBehaviour
 {
-    public Transform target;
+    private Transform target;
+    private float speed = 1.0f;
 
-    public float speed = 1.0f;
+    void Start()
+    {
+        target = GameObject.FindGameObjectWithTag("Player").transform;
+    }
 
     void Update()
     {
