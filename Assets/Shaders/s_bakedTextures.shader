@@ -27,6 +27,13 @@ Shader "Unlit/s_bakedTextures"
         [HideInInspector] _HalftoneLightThreshold("Halftone Light Threshold", Float) = 0
         [HideInInspector] _HalftoneSoftness("Halftone Softness", Range(0.01,5)) = 1
 
+        //highlighting
+        [HideInInspector] _HighlightColFreq("Color Frequency", Float) = 1
+        [HideInInspector] _HighlightColMag("Color Magnitude", Float) = 1
+
+        [HideInInspector] _HighlightPosFreq("Position Frequency", Float) = 1
+        [HideInInspector] _HighlightPosMag("Position Magnitude", Float) = 1
+
     }
     SubShader
     {
@@ -34,6 +41,7 @@ Shader "Unlit/s_bakedTextures"
             HLSLINCLUDE
                 #include "Assets/Shaders/HLSLSubFiles/HelperShaderFunctions.hlsl"
                 #include "Assets/Shaders/HLSLSubFiles/CustomLightingFunctions.hlsl"
+                #include "Assets/Shaders/HLSLSubFiles/Highlighters.hlsl"
             
                 CBUFFER_START(UnityPerMaterial)
                     
@@ -54,6 +62,13 @@ Shader "Unlit/s_bakedTextures"
                     float _HalftoneLightThreshold;
                     float _HalftoneSoftness;
 
+                    //highlighting
+                    float _HighlightColFreq;
+                    float _HighlightColMag;
+
+                    float _HighlightPosFreq;
+                    float _HighlightPosMag;
+
                 CBUFFER_END
             
                 //textures
@@ -70,7 +85,7 @@ Shader "Unlit/s_bakedTextures"
 
                 SAMPLER(sampler_HalftonePattern);
 
-                struct VertexInput
+                struct VertexInput_full
                 {
                     float4 position : POSITION;
 
@@ -86,6 +101,11 @@ Shader "Unlit/s_bakedTextures"
                     float2 uvEmissionTexture : TEXCOORD6;
 
                     float2 uvHalftonePattern : TEXCOORD7;
+                };
+
+                struct VertexInput_current
+                {
+                    float3 uvHighlight : TEXCOORD8;
                 };
 
                 struct VertexOutput 
@@ -104,7 +124,11 @@ Shader "Unlit/s_bakedTextures"
                     float2 uvEmissionTexture : TEXCOORD6;
 
                     float2 uvHalftonePattern : TEXCOORD7;
+
+                    float3 uvHighlight : TEXCOORD8;
                 };
+
+
 
             ENDHLSL
 
@@ -128,11 +152,12 @@ Shader "Unlit/s_bakedTextures"
             // This is used during shadow map generation to differentiate between directional and punctual light shadows, as they use different formulas to apply Normal Bias
             #pragma multi_compile_vertex _ _CASTING_PUNCTUAL_LIGHT_SHADOW
 
-                VertexOutput vert (VertexInput v)
+                VertexOutput vert (VertexInput_full v)
                 {
                     VertexOutput o;
 
-                    o.position = TransformObjectToHClip(v.position);
+                    o.uvHighlight = PulsingBloom(v.position, _HighlightPosFreq, _HighlightPosMag);
+                    o.position = TransformObjectToHClip(o.uvHighlight);
                     o.worldPos = mul(unity_ObjectToWorld, float4(v.position.xyz, 1.0)).xyz;
 
                     o.uvBakedTexture = v.uvBakedTexture;
@@ -192,8 +217,10 @@ Shader "Unlit/s_bakedTextures"
                         _HalftoneSoftness);
                     
                     float3 totalLightMap = mainlightMap + additionalLightsMap + ambientLight;
-                    float3 albedo = (bakedTextureRGB * totalLightMap) + emissionTextureRGB;
-                    return float4(albedo,1);
+                    float4 albedo = float4((bakedTextureRGB * totalLightMap) + emissionTextureRGB, albedo.a);
+
+                    albedo = PulsingBloom(albedo, _HighlightColFreq, _HighlightColMag);
+                    return albedo;
                 }
             
             ENDHLSL
@@ -214,7 +241,7 @@ Shader "Unlit/s_bakedTextures"
 
 
                 //nessacary boilerplate 
-                VertexOutput vert (VertexInput v) 
+                VertexOutput vert (VertexInput_full v)
                 {
                     VertexOutput o; 
                     o.position = TransformObjectToHClip(v.position);
