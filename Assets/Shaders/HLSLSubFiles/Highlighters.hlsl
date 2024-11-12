@@ -1,13 +1,29 @@
 #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
 
-float4 PulsingBloom (float4 textureInput, float frequency, float magnitude)
+float3 PulsingBloomVert (bool isOn, float3 In, float frequency, float magnitude, float offset)
 {
-    float t = _Time.y;
+    if (isOn > 0.5)
+    {
+        float t = _Time.y;
     
-    t = magnitude * sin(t * frequency) * 0.5 + 0.5;
+        t = sin(t * frequency) * 0.5 + offset;
     
-    textureInput = float4 (RGBToHSV(textureInput), textureInput.w);
-    textureInput = float4 (textureInput.x, textureInput.y, textureInput.z * t, textureInput.w);
-    textureInput = float4(HSVToRGB(textureInput), textureInput.w);
-    return textureInput;
+        In *= t;
+    }
+    return In;
+}
+
+float3 PulsingBloomFrag (bool isOn, float3 In, float frequency, float magnitude, float offset)
+{
+    if (isOn > 0.5)
+    {
+        float t = _Time.y;
+    
+        t = sin(t * frequency) * 0.5 + offset;
+    
+        In = RGBToHSV(In);
+        In.z *= t;
+        In = HSVToRGB(In);
+    }
+    return In;
 }

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3351421665615963644}
   - component: {fileID: 6886146646796263436}
   - component: {fileID: 3067265113298056309}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Stamina
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -165,7 +165,7 @@ GameObject:
   - component: {fileID: 61154758047805019}
   - component: {fileID: 7691220030333403948}
   - component: {fileID: 8027853555013087366}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -432,7 +432,7 @@ GameObject:
   - component: {fileID: 982609455826973843}
   - component: {fileID: 4504979614104791550}
   - component: {fileID: 3017222265708764974}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: PlayerMovementPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -508,7 +508,7 @@ GameObject:
   - component: {fileID: 5960043647311664102}
   - component: {fileID: 6328567080836881843}
   - component: {fileID: 3924312962730973714}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: HUDCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -597,7 +597,7 @@ GameObject:
   - component: {fileID: 8041996051897572159}
   - component: {fileID: 6429099132864253661}
   - component: {fileID: 54348398336843152}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -739,7 +739,7 @@ GameObject:
   - component: {fileID: 6889352750889079790}
   - component: {fileID: 6692388926247183842}
   - component: {fileID: 5155889003492612935}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: PlayerController
   m_TagString: Player
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
@@ -761,6 +761,7 @@ Transform:
   m_Children:
   - {fileID: 4108394798660880393}
   - {fileID: 536985214559867937}
+  - {fileID: 5022922056539596655}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: -360, z: 0}
 --- !u!136 &946067957456067058
@@ -830,7 +831,7 @@ MonoBehaviour:
   currentObject: {fileID: 0}
   interactionLayerMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   interactionTMP: {fileID: 3916537020581392327}
 --- !u!114 &5155889003492612935
 MonoBehaviour:
@@ -885,7 +886,7 @@ GameObject:
   - component: {fileID: 6939070955250116432}
   - component: {fileID: 5564882290105694716}
   - component: {fileID: 8256806499869043622}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Player Stand Prompt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1022,6 +1023,51 @@ CanvasGroup:
   m_Interactable: 0
   m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
+--- !u!1 &5169505449154888616
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5022922056539596655}
+  - component: {fileID: 6574894420288499951}
+  m_Layer: 0
+  m_Name: InputManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5022922056539596655
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5169505449154888616}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1055270108988332596}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6574894420288499951
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5169505449154888616}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6fa921fad539234fbb4720e16185057, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inputActions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
 --- !u!1 &5198137000028396669
 GameObject:
   m_ObjectHideFlags: 0
@@ -1034,7 +1080,7 @@ GameObject:
   - component: {fileID: 2290333201909985369}
   - component: {fileID: 1276580925714052024}
   - component: {fileID: 4937891856881297610}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Player Subtitles Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1182,7 +1228,7 @@ GameObject:
   - component: {fileID: 1571570787832756456}
   - component: {fileID: 3831031917652895544}
   - component: {fileID: 5870497699521524210}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: StaminaBG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1257,7 +1303,7 @@ GameObject:
   - component: {fileID: 2753916211533022574}
   - component: {fileID: 1946481543227132903}
   - component: {fileID: 632526699145493805}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Reticle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1333,7 +1379,7 @@ GameObject:
   - component: {fileID: 5405654861942251128}
   - component: {fileID: 4084736294765257463}
   - component: {fileID: 2294108564122456645}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Debugging
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1419,7 +1465,7 @@ GameObject:
   - component: {fileID: 1816343523769253470}
   - component: {fileID: 3916537020581392327}
   - component: {fileID: 6626918411218068481}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Player Interaction Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1757,7 +1803,7 @@ GameObject:
   - component: {fileID: 4990551714433581360}
   - component: {fileID: 6317564638881299117}
   - component: {fileID: 7458880174737528705}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: BuildPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1832,7 +1878,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2214756477754613415}
   - component: {fileID: 2758562118923355594}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: SprintBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}

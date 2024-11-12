@@ -19,7 +19,7 @@ GameObject:
   - component: {fileID: 727950681932862487}
   - component: {fileID: 6228375709402738962}
   - component: {fileID: 2885035330115917274}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Fragment
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36,7 +36,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0.7069834, y: 0, z: 0, w: 0.7072302}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.09195, y: 0.09195, z: 0.09195}
+  m_LocalScale: {x: 0.09195, y: 0.09195001, z: 0.09195001}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8510775806074955144}
@@ -5004,7 +5004,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b0c8eab1121f274da1635a44e9af0ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  activateObjects: []
+  activateObjects:
+  - {fileID: 0}
   inactiveObjects: []
 --- !u!114 &9118658281315451227
 MonoBehaviour:
@@ -5018,7 +5019,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: adb771eb3b258eb43935e4732564a3bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  displayMessage: Capture Memory
+  displayMessage: 'Capture Memory [E]'
   onInteraction:
     m_PersistentCalls:
       m_Calls:
