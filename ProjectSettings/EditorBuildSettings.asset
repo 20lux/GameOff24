@@ -20,6 +20,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/04_Cliff.unity
     guid: 0ec4a1aa8ec763940935309be323a075
+  - enabled: 1
+    path: Assets/Scenes/05_Fall.unity
+    guid: b0662d0a9200759468d8bcab8f87b270
+  - enabled: 1
+    path: Assets/Scenes/06_End.unity
+    guid: 516463a6f9495134298a4a0d7f74059e
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0

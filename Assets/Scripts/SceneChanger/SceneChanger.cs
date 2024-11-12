@@ -11,6 +11,7 @@ public class SceneChanger : MonoBehaviour
         Home,
         Forest,
         Cliff,
+        Fall,
         End
     }
 
@@ -42,8 +43,11 @@ public class SceneChanger : MonoBehaviour
                 case Scene.Cliff:
                     SceneManager.LoadSceneAsync("04_Cliff");
                     break;
+                case Scene.Fall:
+                    SceneManager.LoadSceneAsync("05_Fall");
+                    break;
                 case Scene.End:
-                    SceneManager.LoadSceneAsync("05_End");
+                    SceneManager.LoadSceneAsync("06_End");
                     break;
                 default:
                     SceneManager.LoadSceneAsync("01_Title");
