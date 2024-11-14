@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8547199539622894771}
   - component: {fileID: 2263769907185155682}
   - component: {fileID: 755941591829155431}
+  - component: {fileID: 5295817876757299564}
   m_Layer: 0
   m_Name: E_Stairs07
   m_TagString: Untagged
@@ -26,13 +27,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6665193246057062722}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.5288062, y: 0.5288062, z: -0.46942937, w: -0.4694294}
+  m_LocalRotation: {x: -0.52880585, y: -0.52880585, z: 0.46942982, w: 0.46942982}
   m_LocalPosition: {x: -73.29306, y: 9.028263, z: -125.22818}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -96.808, z: 90}
 --- !u!33 &2263769907185155682
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -86,3 +87,25 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &5295817876757299564
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6665193246057062722}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -8871025251745394404, guid: e359c8d071e01d346abdb3f2202fd44f, type: 3}
