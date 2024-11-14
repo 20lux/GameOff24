@@ -5068,10 +5068,6 @@ PrefabInstance:
       propertyPath: m_AnchorMin.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6692388926247183842, guid: e1945d0e49bed444b8da414f187803da, type: 3}
-      propertyPath: interactionLayerMask.m_Bits
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
