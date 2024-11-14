@@ -161,7 +161,7 @@ Shader "Unlit/s_bakedTextures"
                 {
                     v2f o;
 
-                    v.position = PulsingBloom(_IsHighlighting, v.position, _HighlightPosFreq, _HighlightPosMag, _HighlightSinOffset);
+                    v.position.xyz = PulsingBloomVert(_IsHighlighting, v.position.xyz, _HighlightPosFreq, _HighlightPosMag, _HighlightSinOffset);
                     o.worldPos = mul(unity_ObjectToWorld, v.position).xyz;
                     o.position = TransformObjectToHClip(v.position);
 
@@ -224,10 +224,10 @@ Shader "Unlit/s_bakedTextures"
                         _HalftoneSoftness);
                     
                     float3 totalLightMap = mainlightMap + additionalLightsMap + ambientLight;
-                    float4 albedo = float4((bakedTextureRGB * totalLightMap) + emissionTextureRGB, albedo.a);
+                    float3 albedo = float3 (bakedTextureRGB * totalLightMap) + emissionTextureRGB;
 
-                    albedo = PulsingBloom(_IsHighlighting, albedo, _HighlightColFreq, _HighlightColMag, _HighlightSinOffset);
-                    return albedo;
+                    albedo = PulsingBloomFrag(_IsHighlighting, albedo, _HighlightColFreq, _HighlightColMag, _HighlightSinOffset);
+                    return float4 (albedo,1);
                 }
             
             ENDHLSL
@@ -250,7 +250,7 @@ Shader "Unlit/s_bakedTextures"
                 v2f vert (appdata_full v)
                 {
                     v2f o;
-                    v.position = PulsingBloom(_IsHighlighting, v.position, _HighlightPosFreq, _HighlightPosMag, _HighlightSinOffset);
+                    v.position.xyz = PulsingBloomVert(_IsHighlighting, v.position.xyz, _HighlightPosFreq, _HighlightPosMag, _HighlightSinOffset);
                     o.position = TransformObjectToHClip(v.position);
                     return o;
                 }
