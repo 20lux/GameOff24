@@ -64,11 +64,18 @@ public class SeemlessTextureGUI : ShaderGUI
         showHalftoneSettings = EditorGUILayout.Foldout(showHalftoneSettings, "Halftone Settings");
         if (showHalftoneSettings)
         {
+            MaterialProperty useHalftone = FindProperty("_UseHalftone", properties);
+
+
             MaterialProperty halftonePattern = FindProperty("_HalftonePattern", properties);
             MaterialProperty halftonePatternScale = FindProperty("_HalftonePatternScale", properties);
             MaterialProperty halftoneFalloffThreshold = FindProperty("_HalftoneFalloffThreshold", properties);
             MaterialProperty halftoneLightThreshold = FindProperty("_HalftoneLightThreshold", properties);
             MaterialProperty halftoneSoftness = FindProperty("_HalftoneSoftness", properties);
+
+            bool useHalftoneBool = useHalftone.floatValue > 0.5f;
+            useHalftoneBool = EditorGUILayout.Toggle("Use Halftone", useHalftoneBool);
+            useHalftone.floatValue = useHalftoneBool ? 1.0f : 0.0f;
 
             materialEditor.ShaderProperty(halftonePattern, new GUIContent(halftonePattern.displayName, "Use black and white texture pattern"));
             materialEditor.ShaderProperty(halftonePatternScale, halftonePatternScale.displayName);

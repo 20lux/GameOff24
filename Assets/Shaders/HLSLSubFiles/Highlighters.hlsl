@@ -6,7 +6,7 @@ float3 PulsingBloomVert (bool isOn, float3 In, float frequency, float magnitude,
     {
         float t = _Time.y;
     
-        t = sin(t * frequency) * 0.5 + offset;
+        t = magnitude * sin(t * frequency) * 0.5 + offset;
     
         In *= t;
     }
@@ -19,7 +19,7 @@ float3 PulsingBloomFrag (bool isOn, float3 In, float frequency, float magnitude,
     {
         float t = _Time.y;
     
-        t = sin(t * frequency) * 0.5 + offset;
+        t = magnitude * sin(t * frequency) * 0.5 + offset;
     
         In = RGBToHSV(In);
         In.z *= t;

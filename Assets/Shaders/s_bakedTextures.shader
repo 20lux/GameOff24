@@ -22,7 +22,11 @@ Shader "Unlit/s_bakedTextures"
         [HideInInspector] _AdditionalLightIntensityCurve("Additional Light Intensity Curve", Range(0.01, 2.0)) = 1
 
         //halftone
+        [HideInInspector] _UseHalftone("Use Halftone", Float) = 0
+
         [NoScaleOffset] _HalftonePattern("Halftone Pattern", 2D) = "white" {}
+        [HideInInspector] _HalftonePatternScale("Halftone Pattern Scale", Float) = 1
+
         [HideInInspector] _HalftoneFalloffThreshold("Halftone Falloff Threshold", Float) = 0
         [HideInInspector] _HalftoneLightThreshold("Halftone Light Threshold", Float) = 0
         [HideInInspector] _HalftoneSoftness("Halftone Softness", Range(0.01,5)) = 1
@@ -62,6 +66,9 @@ Shader "Unlit/s_bakedTextures"
                     float _AdditionalLightIntensityCurve;
 
                     //halftone
+                    bool _UseHalftone;
+
+                    float _HalftonePatternScale;
                     float _HalftoneFalloffThreshold;
                     float _HalftoneLightThreshold;
                     float _HalftoneSoftness;
@@ -201,6 +208,7 @@ Shader "Unlit/s_bakedTextures"
                     half3 ambientLight = SampleSH(i.normal) * _AmbientLightStrength;
 
                     //halftone
+                    i.uvHalftonePattern *= _HalftonePatternScale;
                     float halftoneTexture = SAMPLE_TEXTURE2D(_HalftonePattern, sampler_HalftonePattern, i.uvHalftonePattern).r;
 
                     float3 additionalLightsMap = AdditionalLights(
@@ -210,6 +218,7 @@ Shader "Unlit/s_bakedTextures"
                         _AdditionalLightIntensityCurve,
                         _AdditionalLightHueFalloff,
                         _AdditionalLightSaturationFalloff,
+                        _UseHalftone,
                         halftoneTexture,
                         _HalftoneFalloffThreshold,
                         _HalftoneLightThreshold,
@@ -218,6 +227,7 @@ Shader "Unlit/s_bakedTextures"
                     float3 mainlightMap = MainLight(
                         i.worldPos,
                         i.normal,
+                        _UseHalftone,
                         halftoneTexture,
                         _HalftoneFalloffThreshold,
                         _HalftoneLightThreshold,
