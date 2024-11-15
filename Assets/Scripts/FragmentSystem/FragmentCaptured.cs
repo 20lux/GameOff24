@@ -5,44 +5,55 @@ namespace TheFall.FragmentController
     public class FragmentCaptured : MonoBehaviour
     {
         [Tooltip("Objects to animate after fragment is captured - usually platforms")]
-        [SerializeField] private Animator[] activateObjects;
+        [SerializeField] private Animator[] animatedObjects;
         
         [Tooltip("Inactive objects to activate once fragment is captured - usually platforms")]
-        [SerializeField] private GameObject[] inactiveObjects;
+        [SerializeField] private GameObject[] staticObjects;
+        [SerializeField] private 
+
 
         void Start()
         {
-            if (inactiveObjects.Length != 0)
+            if (staticObjects.Length != 0)
             {
-                for (int h = 0; h <inactiveObjects.Length; h++)
+                for (int h = 0; h < staticObjects.Length; h++)
                 {
-                    inactiveObjects[h].SetActive(false);
+                    staticObjects[h].SetActive(false);
                 }
             }
         }
 
-        public void OnFragmentCapture()
+        public void OnFragmentCaptured()
         {
-            if (inactiveObjects.Length != 0)
-            {
-                for (int j = 0; j < inactiveObjects.Length; j++)
-                {
-                    inactiveObjects[j].SetActive(true); // Can also have shader trigger here instead
-                }
-            }
-
-            if (activateObjects.Length != 0)
-            {
-                for (int i = 0; i < activateObjects.Length; i++)
-                {
-                    activateObjects[i].SetBool("Activate", true);
-                }
-            }
+            ActivateInactiveObjects();
+            AnimateActivatedObjects();
         }
 
         public void DestroyFragment()
         {
             Destroy(gameObject);
+        }
+
+        public void ActivateInactiveObjects()
+        {
+            if (staticObjects.Length != 0)
+            {
+                for (int j = 0; j < staticObjects.Length; j++)
+                {
+                    staticObjects[j].SetActive(true); // Can also have shader trigger here instead
+                }
+            }
+        }
+
+        public void AnimateActivatedObjects()
+        {
+            if (animatedObjects.Length != 0)
+            {
+                for (int i = 0; i < animatedObjects.Length; i++)
+                {
+                    animatedObjects[i].SetBool("Activate", true);
+                }
+            }
         }
     }
 }
