@@ -96,8 +96,8 @@ public class HighlightInteraction : MonoBehaviour
         if (_renderer == null)
             return false;
 
-        Shader targetShaderOneSided = Shader.Find("Shader Graphs/s_cellShade");
-        Shader targetShaderDoubleFace = Shader.Find("Shader Graphs/s_cellShadeDoubleFace");
+        Shader targetShaderOneSided = Shader.Find("Shader Graphs/s_bakedTextures");
+        Shader targetShaderDoubleFace = Shader.Find("Shader Graphs/s_seemlessTextures");
         if (targetShaderOneSided == null && targetShaderDoubleFace == null)
         {
             Debug.LogError("Target shader not found.");
