@@ -7,7 +7,7 @@ public class CelestialController : MonoBehaviour
 
     private bool celestialLeftInput;
     private bool celestialRightInput;
-    private bool isActive = false;
+    public bool isActive = false;
     private int rotDir = 0;
 
     private void Update()
