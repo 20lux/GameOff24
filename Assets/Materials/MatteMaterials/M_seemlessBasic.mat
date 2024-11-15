@@ -134,7 +134,7 @@ Material:
     - _HalftoneFalloffThreshold: 8
     - _HalftoneLightThreshold: 5
     - _HalftonePatternScale: 1
-    - _HalftoneSoftness: 1
+    - _HalftoneSoftness: 1.71
     - _Metallic: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.005

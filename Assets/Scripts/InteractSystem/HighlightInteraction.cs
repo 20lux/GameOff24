@@ -48,14 +48,14 @@ public class HighlightInteraction : MonoBehaviour
         canHighlight = CheckHighlightable();
     }
 
-    public void StartHighlighting()
+    public void StartHighlighting() 
     {
         if (!CheckHighlightable())
             return;
         if (highlightMaterial == null)
             AssignRuntimeMaterial();
 
-        highlightMaterial.SetInt("_Highlighting", 1);
+        highlightMaterial.SetInt("_IsHighlighting", 1);
         _renderer.sharedMaterials[highlightIndex] = highlightMaterial;
     }
 
@@ -66,16 +66,16 @@ public class HighlightInteraction : MonoBehaviour
         if (highlightMaterial == null)
             AssignRuntimeMaterial();
 
-        highlightMaterial.SetInt("_Highlighting", 0);
+        highlightMaterial.SetInt("_IsHighlighting", 0);
         _renderer.sharedMaterials[highlightIndex] = highlightMaterial;
     }
 
     private void AssignRuntimeMaterial()
     {
-        Shader cellShadeShader = Shader.Find("Shader Graphs/s_cellShade");
+        Shader cellShadeShader = Shader.Find("s_bakedTextures");
         if (cellShadeShader == null)
         {
-            Debug.LogError("s_cellShade shader not found.");
+            Debug.LogError("s_bakedTextures shader not found.");
             return;
         }
 
@@ -96,28 +96,17 @@ public class HighlightInteraction : MonoBehaviour
         if (_renderer == null)
             return false;
 
-        Shader targetShaderOneSided = Shader.Find("Shader Graphs/s_bakedTextures");
-        Shader targetShaderDoubleFace = Shader.Find("Shader Graphs/s_seemlessTextures");
-        if (targetShaderOneSided == null && targetShaderDoubleFace == null)
+        Shader bakedTexture = Shader.Find("s_bakedTextures");
+        if (bakedTexture == null)
         {
             Debug.LogError("Target shader not found.");
             return false;
         }
 
-        if (targetShaderOneSided != null)
+        if (bakedTexture != null)
             for (int i = 0; i < _renderer.sharedMaterials.Length; i++)
             {
-                if (_renderer.sharedMaterials[i].shader == targetShaderOneSided)
-                {
-                    highlightIndex = i;
-                    return true;
-                }
-            }
-
-        if (targetShaderDoubleFace != null)
-            for (int i = 0; i < _renderer.sharedMaterials.Length; i++)
-            {
-                if (_renderer.sharedMaterials[i].shader == targetShaderDoubleFace)
+                if (_renderer.sharedMaterials[i].shader == bakedTexture)
                 {
                     highlightIndex = i;
                     return true;
