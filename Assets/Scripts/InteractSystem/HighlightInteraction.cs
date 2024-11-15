@@ -48,14 +48,14 @@ public class HighlightInteraction : MonoBehaviour
         canHighlight = CheckHighlightable();
     }
 
-    public void StartHighlighting()
+    public void StartHighlighting() 
     {
         if (!CheckHighlightable())
             return;
         if (highlightMaterial == null)
             AssignRuntimeMaterial();
 
-        highlightMaterial.SetInt("_Highlighting", 1);
+        highlightMaterial.SetInt("_IsHighlighting", 1);
         _renderer.sharedMaterials[highlightIndex] = highlightMaterial;
     }
 
@@ -66,21 +66,21 @@ public class HighlightInteraction : MonoBehaviour
         if (highlightMaterial == null)
             AssignRuntimeMaterial();
 
-        highlightMaterial.SetInt("_Highlighting", 0);
+        highlightMaterial.SetInt("_IsHighlighting", 0);
         _renderer.sharedMaterials[highlightIndex] = highlightMaterial;
     }
 
     private void AssignRuntimeMaterial()
     {
-        Shader cellShadeShader = Shader.Find("Shader Graphs/s_cellShade");
-        if (cellShadeShader == null)
+        Shader bakedTextureShader = Shader.Find("Unlit/s_bakedTextures");
+        if (bakedTextureShader == null)
         {
-            Debug.LogError("s_cellShade shader not found.");
+            Debug.LogError("s_bakedTextures shader not found.");
             return;
         }
 
         // Create a new instance of the material with the shader
-        highlightMaterial = new Material(cellShadeShader);
+        highlightMaterial = new Material(bakedTextureShader);
         highlightMaterial.name = _renderer.sharedMaterials[highlightIndex].name + "_(Copy)";  // Set the name of the new material
         highlightMaterial.CopyPropertiesFromMaterial(_renderer.sharedMaterials[highlightIndex]);
 
@@ -96,28 +96,17 @@ public class HighlightInteraction : MonoBehaviour
         if (_renderer == null)
             return false;
 
-        Shader targetShaderOneSided = Shader.Find("Shader Graphs/s_cellShade");
-        Shader targetShaderDoubleFace = Shader.Find("Shader Graphs/s_cellShadeDoubleFace");
-        if (targetShaderOneSided == null && targetShaderDoubleFace == null)
+        Shader bakedTextureShader = Shader.Find("Unlit/s_bakedTextures");
+        if (bakedTextureShader == null)
         {
             Debug.LogError("Target shader not found.");
             return false;
         }
 
-        if (targetShaderOneSided != null)
+        if (bakedTextureShader != null)
             for (int i = 0; i < _renderer.sharedMaterials.Length; i++)
             {
-                if (_renderer.sharedMaterials[i].shader == targetShaderOneSided)
-                {
-                    highlightIndex = i;
-                    return true;
-                }
-            }
-
-        if (targetShaderDoubleFace != null)
-            for (int i = 0; i < _renderer.sharedMaterials.Length; i++)
-            {
-                if (_renderer.sharedMaterials[i].shader == targetShaderDoubleFace)
+                if (_renderer.sharedMaterials[i].shader == bakedTextureShader)
                 {
                     highlightIndex = i;
                     return true;
