@@ -72,15 +72,15 @@ public class HighlightInteraction : MonoBehaviour
 
     private void AssignRuntimeMaterial()
     {
-        Shader cellShadeShader = Shader.Find("s_bakedTextures");
-        if (cellShadeShader == null)
+        Shader bakedTextureShader = Shader.Find("Unlit/s_bakedTextures");
+        if (bakedTextureShader == null)
         {
             Debug.LogError("s_bakedTextures shader not found.");
             return;
         }
 
         // Create a new instance of the material with the shader
-        highlightMaterial = new Material(cellShadeShader);
+        highlightMaterial = new Material(bakedTextureShader);
         highlightMaterial.name = _renderer.sharedMaterials[highlightIndex].name + "_(Copy)";  // Set the name of the new material
         highlightMaterial.CopyPropertiesFromMaterial(_renderer.sharedMaterials[highlightIndex]);
 
@@ -96,17 +96,17 @@ public class HighlightInteraction : MonoBehaviour
         if (_renderer == null)
             return false;
 
-        Shader bakedTexture = Shader.Find("s_bakedTextures");
-        if (bakedTexture == null)
+        Shader bakedTextureShader = Shader.Find("Unlit/s_bakedTextures");
+        if (bakedTextureShader == null)
         {
             Debug.LogError("Target shader not found.");
             return false;
         }
 
-        if (bakedTexture != null)
+        if (bakedTextureShader != null)
             for (int i = 0; i < _renderer.sharedMaterials.Length; i++)
             {
-                if (_renderer.sharedMaterials[i].shader == bakedTexture)
+                if (_renderer.sharedMaterials[i].shader == bakedTextureShader)
                 {
                     highlightIndex = i;
                     return true;
