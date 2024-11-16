@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(BoxCollider))]
 public class SceneChanger : MonoBehaviour
@@ -17,6 +16,8 @@ public class SceneChanger : MonoBehaviour
 
     [Tooltip("Select scene for the trigger to transition to")]
     public Scene scene;
+    [Tooltip("Speed of scene fade transition")]
+    public float speed = 1f;
     private BoxCollider bc;
 
     void Start()
@@ -35,22 +36,22 @@ public class SceneChanger : MonoBehaviour
             switch (scene)
             {
                 case Scene.Home:
-                    SceneManager.LoadSceneAsync("02_Home");
+                    Initiate.Fade("02_Home", Color.black, speed);
                     break;
                 case Scene.Forest:
-                    SceneManager.LoadSceneAsync("03_Forest");
+                    Initiate.Fade("03_Forest", Color.black, speed);
                     break;
                 case Scene.Cliff:
-                    SceneManager.LoadSceneAsync("04_Cliff");
+                    Initiate.Fade("04_Cliff", Color.black, speed);
                     break;
                 case Scene.Fall:
-                    SceneManager.LoadSceneAsync("05_Fall");
+                    Initiate.Fade("05_Fall", Color.black, speed);
                     break;
                 case Scene.End:
-                    SceneManager.LoadSceneAsync("06_End");
+                    Initiate.Fade("06_End", Color.black, speed);
                     break;
                 default:
-                    SceneManager.LoadSceneAsync("01_Title");
+                    Initiate.Fade("01_Title", Color.black, speed);
                     break;
             }
         }
