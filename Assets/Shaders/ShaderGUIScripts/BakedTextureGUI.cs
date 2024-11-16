@@ -21,9 +21,16 @@ public class BakedTextureGUI : ShaderGUI
             MaterialProperty normalTexture = FindProperty("_NormalTexture", properties);
             MaterialProperty emissionTexture = FindProperty("_EmissionTexture", properties);
 
+            MaterialProperty useEmission = FindProperty("_UseEmission", properties);
+
+
             materialEditor.ShaderProperty(bakedTexture, bakedTexture.displayName);
             materialEditor.ShaderProperty(normalTexture, normalTexture.displayName);
             materialEditor.ShaderProperty(emissionTexture, emissionTexture.displayName);
+
+            bool useEmissionBool = useEmission.floatValue < 0.5f;
+            useEmissionBool = EditorGUILayout.Toggle("Use Emission", useEmissionBool);
+            useEmission.floatValue = useEmissionBool ? 0.0f : 1.0f;
         }
 
         EditorGUILayout.Space();

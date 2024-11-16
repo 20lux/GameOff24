@@ -11,6 +11,7 @@ Shader "Unlit/s_bakedTextures"
         [HideInInspector] _NormalOffset("Normal Offset", Range(0,1)) = 0.1
 
         //emission
+        [HideInInspector] _UseEmission("Use Emission", Float) = 0
         [NoScaleOffset] _EmissionTexture("Emission Texture", 2D) = "black" {}
 
         //total light
@@ -52,7 +53,8 @@ Shader "Unlit/s_bakedTextures"
                 #include "Assets/Shaders/HLSLSubFiles/Highlighters.hlsl"
             
                 CBUFFER_START(UnityPerMaterial)
-                    
+                //emission
+                    bool _UseEmission;
                 //normals
                     float _NormalStrength;
                     float _NormalOffset;
@@ -233,7 +235,7 @@ Shader "Unlit/s_bakedTextures"
                         _HalftoneLightThreshold,
                         _HalftoneSoftness);
                     
-                    float3 totalLightMap = mainlightMap + additionalLightsMap + ambientLight;
+                    float3 totalLightMap = (mainlightMap + additionalLightsMap + ambientLight) * _UseEmission;
                     float3 albedo = float3 (bakedTextureRGB * totalLightMap) + emissionTextureRGB;
 
                     albedo = PulsingBloomFrag(_IsHighlighting, albedo, _HighlightColFreq, _HighlightColMag, _HighlightSinOffset);
