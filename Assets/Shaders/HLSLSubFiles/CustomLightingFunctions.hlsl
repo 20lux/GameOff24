@@ -1,13 +1,16 @@
 #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Lighting.hlsl"
 
-float HalfTone (float totalAtten, float halftoneTexture, float falloffThreshold, float lightThreshold,  float softness)
+float HalfTone (bool isOn, float totalAtten, float halftoneTexture, float falloffThreshold, float lightThreshold,  float softness)
 {
-    float halftone = totalAtten * -1;
-    float halftoneEdge1 = Remap(halftone, float2(-1, 1), float2(lightThreshold - falloffThreshold, lightThreshold));
+    if (isOn > 0.5)
+    {
+    totalAtten *= -1;
+    float halftoneEdge1 = Remap(totalAtten, float2(-1, 1), float2(lightThreshold - falloffThreshold, lightThreshold));
     float halftoneEdge2 = halftoneEdge1 + softness;
-    float finalHalftone = smoothstep(halftoneEdge1, halftoneEdge2, halftoneTexture);
+    totalAtten = smoothstep(halftoneEdge1, halftoneEdge2, halftoneTexture);   
+    }
     
-    return finalHalftone;
+    return totalAtten;
 
 }
 
@@ -18,6 +21,7 @@ half4 Shadowmask,
 float lightIntensityCurve,
 float3 lightHueFalloff,
 float lightSaturationFalloff,
+bool useHalftone,
 float halftoneTexture,
 float halftoneFalloffThreshold,
 float halftoneLightThreshold,
@@ -46,7 +50,7 @@ float halftoneSoftness
         
         
         fullShadowMap = lightDirection * adjustAtten;
-        float halftoneShadowMap = HalfTone(fullShadowMap, halftoneTexture, halftoneFalloffThreshold, halftoneLightThreshold, halftoneSoftness);
+        float halftoneShadowMap = HalfTone(useHalftone, fullShadowMap, halftoneTexture, halftoneFalloffThreshold, halftoneLightThreshold, halftoneSoftness);
         
         
         lightMapColorLerp = lerp(hueShiftLightColorRGB, light.color, fullShadowMap);
@@ -59,6 +63,7 @@ float halftoneSoftness
 float3 MainLight(
 float3 worldPos,
 float3 worldNormal,
+bool useHalftone,
 float halftoneTexture,
 float halftoneFalloffThreshold,
 float halftoneLightThreshold,
@@ -75,7 +80,7 @@ float halftoneSoftness
     float atten = mainLight.distanceAttenuation * mainLight.shadowAttenuation;
     float totalAtten = atten * direction * mainShadow;
     
-    float halftoneShadowMap = HalfTone(totalAtten, halftoneTexture, halftoneFalloffThreshold, halftoneLightThreshold, halftoneSoftness);
+    float halftoneShadowMap = HalfTone(useHalftone, totalAtten, halftoneTexture, halftoneFalloffThreshold, halftoneLightThreshold, halftoneSoftness);
     mainLightTex = mainLight.color * halftoneShadowMap;
     
     return mainLightTex;

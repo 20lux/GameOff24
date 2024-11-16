@@ -23,10 +23,12 @@ Shader "Unlit/s_seemlessTextures"
 
 
         //halftone
+        [HideInInspector] _UseHalftone("Use Halftone", Float) = 0
+
         [NoScaleOffset] _HalftonePattern("Halftone Pattern", 2D) = "white" {}
         [HideInInspector] _HalftonePatternScale("Halftone Pattern Scale", Float) = 1
-        [HideInInspector] _HalftoneFalloffThreshold("Halftone Falloff Threshold", Float) = 8
-        [HideInInspector] _HalftoneLightThreshold("Halftone Light Threshold", Float) = 5
+        [HideInInspector] _HalftoneFalloffThreshold("Halftone Falloff Threshold", Float) = 0
+        [HideInInspector] _HalftoneLightThreshold("Halftone Light Threshold", Float) = 0
         [HideInInspector] _HalftoneSoftness("Halftone Softness", Range(0.01,5)) = 1
     }
     SubShader
@@ -56,6 +58,8 @@ Shader "Unlit/s_seemlessTextures"
                     float _AdditionalLightIntensityCurve;
 
                     //halftone
+                    bool _UseHalftone;
+
                     float _HalftonePatternScale;
                     float _HalftoneFalloffThreshold;
                     float _HalftoneLightThreshold;
@@ -196,6 +200,7 @@ Shader "Unlit/s_seemlessTextures"
                         _AdditionalLightIntensityCurve,
                         _AdditionalLightHueFalloff,
                         _AdditionalLightSaturationFalloff,
+                        _UseHalftone,
                         halftoneTexture,
                         _HalftoneFalloffThreshold,
                         _HalftoneLightThreshold,
@@ -205,6 +210,7 @@ Shader "Unlit/s_seemlessTextures"
                         IN.worldPos,
                         IN.normal,
                         halftoneTexture,
+                        _UseHalftone,
                         _HalftoneFalloffThreshold,
                         _HalftoneLightThreshold,
                         _HalftoneSoftness);

@@ -118,10 +118,10 @@ Material:
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
-    - _HalftoneFalloffThreshold: 7.55
-    - _HalftoneLightThreshold: 7.33
+    - _HalftoneFalloffThreshold: 8.55
+    - _HalftoneLightThreshold: 7.05
     - _HalftonePatternScale: 1
-    - _HalftoneSoftness: 0.01
+    - _HalftoneSoftness: 1.17
     - _Metallic: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.005
@@ -137,6 +137,7 @@ Material:
     - _SrcBlend: 1
     - _SrcBlendAlpha: 1
     - _Surface: 0
+    - _UseHalftone: 1
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
