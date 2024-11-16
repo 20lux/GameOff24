@@ -202,15 +202,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b0c8eab1121f274da1635a44e9af0ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  activateObjects:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  inactiveObjects:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  animatedObjects: []
+  staticObjects: []
 --- !u!114 &9118658281315451227
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -229,7 +222,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 3483691573322305041}
         m_TargetAssemblyTypeName: TheFall.FragmentController.FragmentCaptured, Assembly-CSharp
-        m_MethodName: OnFragmentCapture
+        m_MethodName: OnFragmentCaptured
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
