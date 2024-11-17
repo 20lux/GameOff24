@@ -1,33 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-7865806162954894594
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Footstep
-  m_EditorClassIdentifier: 
-  Path: event:/Footstep
-  Guid:
-    Data1: -1609112090
-    Data2: 1329643538
-    Data3: 406483112
-    Data4: -958928591
-  Banks:
-  - {fileID: 3017632513160514744}
-  IsStream: 0
-  Is3D: 0
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 330
---- !u!114 &-7459759142458503491
+--- !u!114 &-7469373687182254917
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -39,13 +12,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
   m_Name: bank:/Master.bank
   m_EditorClassIdentifier: 
-  Path: D:/Projects/GameDesignCourse_2024/SummerBreak_2024/GameOff24Docs/FMOD_projects/game_off_24/Build/Desktop/Master.bank
+  Path: Assets/Sounds/TheFall/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638662111145855229
+  lastModified: 638674579547335554
   FileSizes:
   - Name: Desktop
     Value: 1036
+  Exists: 1
+--- !u!114 &-2575866730464523759
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.strings.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/Sounds/TheFall/Build/Desktop/Master.strings.bank
+  Name: Master.strings
+  StudioPath: bank:/Master.strings
+  lastModified: 638674579547370397
+  FileSizes:
+  - Name: Desktop
+    Value: 822
   Exists: 1
 --- !u!114 &11400000
 MonoBehaviour:
@@ -60,19 +53,46 @@ MonoBehaviour:
   m_Name: FMODStudioCache
   m_EditorClassIdentifier: 
   EditorBanks:
-  - {fileID: 9216916570356457889}
-  - {fileID: -7459759142458503491}
-  - {fileID: 3017632513160514744}
+  - {fileID: -2575866730464523759}
+  - {fileID: -7469373687182254917}
+  - {fileID: 1441026000571277379}
   EditorEvents:
-  - {fileID: -7865806162954894594}
+  - {fileID: 146098600739314533}
   EditorParameters: []
   MasterBanks:
-  - {fileID: -7459759142458503491}
+  - {fileID: -7469373687182254917}
   StringsBanks:
-  - {fileID: 9216916570356457889}
-  cacheTime: 638662111146860980
+  - {fileID: -2575866730464523759}
+  cacheTime: 638674579547924859
   cacheVersion: 131620
---- !u!114 &3017632513160514744
+--- !u!114 &146098600739314533
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Music/TitleLoopBGMStart
+  m_EditorClassIdentifier: 
+  Path: event:/Music/TitleLoopBGMStart
+  Guid:
+    Data1: -1508464295
+    Data2: 1116251124
+    Data3: 325710978
+    Data4: 707689532
+  Banks:
+  - {fileID: 1441026000571277379}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 255500
+--- !u!114 &1441026000571277379
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -82,33 +102,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/sfx.bank
+  m_Name: bank:/01Title.bank
   m_EditorClassIdentifier: 
-  Path: D:/Projects/GameDesignCourse_2024/SummerBreak_2024/GameOff24Docs/FMOD_projects/game_off_24/Build/Desktop/sfx.bank
-  Name: sfx
-  StudioPath: bank:/sfx
-  lastModified: 638662111146860980
+  Path: Assets/Sounds/TheFall/Build/Desktop/01Title.bank
+  Name: 01Title
+  StudioPath: bank:/01Title
+  lastModified: 638674579547924859
   FileSizes:
   - Name: Desktop
-    Value: 6144
-  Exists: 1
---- !u!114 &9216916570356457889
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Master.strings.bank
-  m_EditorClassIdentifier: 
-  Path: D:/Projects/GameDesignCourse_2024/SummerBreak_2024/GameOff24Docs/FMOD_projects/game_off_24/Build/Desktop/Master.strings.bank
-  Name: Master.strings
-  StudioPath: bank:/Master.strings
-  lastModified: 638662111145875203
-  FileSizes:
-  - Name: Desktop
-    Value: 804
+    Value: 2213344
   Exists: 1
