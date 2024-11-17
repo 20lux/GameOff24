@@ -599,10 +599,10 @@ MonoBehaviour:
   switchSettingsMigration: 1
   HasSourceProject: 1
   HasPlatforms: 1
-  sourceProjectPath: D:/Projects/GameDesignCourse_2024/SummerBreak_2024/GameOff24Docs/FMOD_projects/game_off_24/game_off_24.fspro
-  sourceBankPath: D:/Projects/GameDesignCourse_2024/SummerBreak_2024/GameOff24Docs/FMOD_projects/game_off_24/Build
+  sourceProjectPath: Assets/Sounds/TheFall/TheFall.fspro
+  sourceBankPath: Assets/Sounds/TheFall/Build
   sourceBankPathUnformatted: 
-  BankRefreshCooldown: 5
+  BankRefreshCooldown: 1
   ShowBankRefreshWindow: 1
   AutomaticEventLoading: 1
   BankLoadType: 0
@@ -624,7 +624,7 @@ MonoBehaviour:
   MasterBanks:
   - Master
   Banks:
-  - sfx
+  - 01Title
   BanksToLoad: []
   LiveUpdatePort: 9264
   EnableMemoryTracking: 0
