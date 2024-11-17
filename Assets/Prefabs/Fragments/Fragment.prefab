@@ -102,20 +102,20 @@ AudioSource:
   m_GameObject: {fileID: 8847577839827064778}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 2198093747487618861, guid: c2acff8789935ed4abffdbaae4de648b, type: 2}
+  m_audioClip: {fileID: 8300000, guid: 69e4aa9ab2bc8ab4db8ce86aba252006, type: 3}
+  m_Resource: {fileID: 8300000, guid: 69e4aa9ab2bc8ab4db8ce86aba252006, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
-  Loop: 1
+  Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 8
+  MaxDistance: 5
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -204,6 +204,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animatedObjects: []
   staticObjects: []
+  capture: {fileID: 8300000, guid: 69e4aa9ab2bc8ab4db8ce86aba252006, type: 3}
+  loop: {fileID: 0}
 --- !u!114 &9118658281315451227
 MonoBehaviour:
   m_ObjectHideFlags: 0

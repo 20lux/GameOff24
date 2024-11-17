@@ -2,6 +2,7 @@ using UnityEngine;
 
 namespace TheFall.FragmentController
 {
+    [RequireComponent(typeof(AudioSource))]
     public class FragmentCaptured : MonoBehaviour
     {
         [Tooltip("Objects to animate after fragment is captured - usually platforms")]
@@ -9,7 +10,11 @@ namespace TheFall.FragmentController
         
         [Tooltip("Inactive objects to activate once fragment is captured - usually platforms")]
         [SerializeField] private GameObject[] staticObjects;
-        [SerializeField] private 
+        [Tooltip("Audio clip to play when player captures the fragment")]
+        [SerializeField] private AudioClip capture;
+        [Tooltip("Audio clip to loop for player proximity")]
+        [SerializeField] private AudioClip loop;
+        private AudioSource audioSource;
 
 
         void Start()
@@ -21,12 +26,18 @@ namespace TheFall.FragmentController
                     staticObjects[h].SetActive(false);
                 }
             }
+
+            audioSource = GetComponent<AudioSource>();
+            audioSource.clip = loop;
+            audioSource.loop = true;
+            audioSource.playOnAwake = true;
         }
 
         public void OnFragmentCaptured()
         {
             ActivateInactiveObjects();
             AnimateActivatedObjects();
+            PlaySoundWhenCaptured();
         }
 
         public void DestroyFragment()
@@ -54,6 +65,13 @@ namespace TheFall.FragmentController
                     animatedObjects[i].SetBool("Activate", true);
                 }
             }
+        }
+
+        public void PlaySoundWhenCaptured()
+        {
+            audioSource.clip = capture;
+            audioSource.loop = false;
+            audioSource.Play();
         }
     }
 }
