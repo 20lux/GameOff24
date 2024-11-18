@@ -1,6 +1,6 @@
 using UnityEngine;
-using TheFall.AudioControl;
 using UnityEngine.Audio;
+using System.Collections;
 
 namespace TheFall.FragmentController
 {
@@ -25,6 +25,8 @@ namespace TheFall.FragmentController
         [Tooltip("Target final volume of SFX - usually 0")]
         public float targetVol = 0;
         private AudioSource audioSource;
+        private Renderer rend;
+        private Light li;
 
 
         void Start()
@@ -41,6 +43,10 @@ namespace TheFall.FragmentController
             audioSource.clip = loop;
             audioSource.loop = true;
             audioSource.playOnAwake = true;
+
+            rend = GetComponent<Renderer>();
+
+            li = GetComponentInChildren<Light>();
         }
 
         public void OnFragmentCaptured()
@@ -52,7 +58,7 @@ namespace TheFall.FragmentController
 
         public void DestroyFragment()
         {
-            Destroy(gameObject);
+            StartCoroutine(WaitToFinishAudio());
         }
 
         public void ActivateInactiveObjects()
@@ -79,8 +85,23 @@ namespace TheFall.FragmentController
 
         public void PlaySoundWhenCaptured()
         {
-            audioSource.PlayOneShot(capture);
-            StartCoroutine(FadeMixerGroup.StartFade(mixer, exposedParam, duration, targetVol));
+            audioSource.clip = capture;
+            audioSource.loop = false;
+            audioSource.Play();
+        }
+
+        IEnumerator WaitToFinishAudio()
+        {
+            var temp = audioSource.clip.length + duration;
+            StartCoroutine(DisableObject());
+            yield return new WaitForSeconds(temp);
+        }
+
+        IEnumerator DisableObject()
+        {
+            rend.enabled = false;
+            li.enabled = false;
+            yield return null;
         }
     }
 }
