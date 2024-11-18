@@ -1,4 +1,6 @@
 using UnityEngine;
+using UnityEngine.Audio;
+using TheFall.AudioControl;
 
 [RequireComponent(typeof(BoxCollider))]
 public class SceneChanger : MonoBehaviour
@@ -17,6 +19,12 @@ public class SceneChanger : MonoBehaviour
     public Scene scene;
     [Tooltip("Speed of scene fade transition")]
     public float speed = 1f;
+    [Tooltip("Audio mixer group to fade audio when transitioning scene")]
+    public AudioMixer mixer;
+    [Tooltip("Exposed parameter from audio mixer to choose to fade out")]
+    public string exposedParameter;
+    [Tooltip("Target volume of final fade")]
+    public float targetVol = 0;
     private BoxCollider bc;
 
     void Start()
@@ -32,21 +40,33 @@ public class SceneChanger : MonoBehaviour
             switch (scene)
             {
                 case Scene.Home:
+                    StartCoroutine(FadeMixerGroup.StartFade(mixer, 
+                        exposedParameter, speed, targetVol));
                     Initiate.Fade("02_Home", Color.black, speed);
                     break;
                 case Scene.Forest:
+                    StartCoroutine(FadeMixerGroup.StartFade(mixer, 
+                        exposedParameter, speed, targetVol));
                     Initiate.Fade("03_Forest", Color.black, speed);
                     break;
                 case Scene.Cliff:
+                    StartCoroutine(FadeMixerGroup.StartFade(mixer, 
+                        exposedParameter, speed, targetVol));
                     Initiate.Fade("04_Cliff", Color.black, speed);
                     break;
                 case Scene.Fall:
+                    StartCoroutine(FadeMixerGroup.StartFade(mixer, 
+                        exposedParameter, speed, targetVol));
                     Initiate.Fade("05_Fall", Color.black, speed);
                     break;
                 case Scene.End:
+                    StartCoroutine(FadeMixerGroup.StartFade(mixer, 
+                        exposedParameter, speed, targetVol));
                     Initiate.Fade("06_End", Color.black, speed);
                     break;
                 default:
+                    StartCoroutine(FadeMixerGroup.StartFade(mixer, 
+                        exposedParameter, speed, targetVol));
                     Initiate.Fade("01_Title", Color.black, speed);
                     break;
             }
