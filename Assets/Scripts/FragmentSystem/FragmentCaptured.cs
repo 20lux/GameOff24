@@ -1,4 +1,6 @@
 using UnityEngine;
+using TheFall.AudioControl;
+using UnityEngine.Audio;
 
 namespace TheFall.FragmentController
 {
@@ -14,6 +16,14 @@ namespace TheFall.FragmentController
         [SerializeField] private AudioClip capture;
         [Tooltip("Audio clip to loop for player proximity")]
         [SerializeField] private AudioClip loop;
+        [Tooltip("To be used for SFX audio mixer group")]
+        public AudioMixer mixer;
+        [Tooltip("SFX audio mixer group exposed parameter")]
+        public string exposedParam = "sfxVol";
+        [Tooltip("Duration of SFX audio fade")]
+        public float duration = 1f;
+        [Tooltip("Target final volume of SFX - usually 0")]
+        public float targetVol = 0;
         private AudioSource audioSource;
 
 
@@ -69,9 +79,8 @@ namespace TheFall.FragmentController
 
         public void PlaySoundWhenCaptured()
         {
-            audioSource.clip = capture;
-            audioSource.loop = false;
-            audioSource.Play();
+            audioSource.PlayOneShot(capture);
+            StartCoroutine(FadeMixerGroup.StartFade(mixer, exposedParam, duration, targetVol));
         }
     }
 }

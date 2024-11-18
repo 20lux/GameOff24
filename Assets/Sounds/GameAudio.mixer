@@ -265,6 +265,8 @@ AudioMixerController:
     name: forestVol
   - guid: f3ede40dcce829e4082a0e4a55903eab
     name: homeVol
+  - guid: 62c9db5ab9c367c43b114e557b4491b9
+    name: sfxVol
   - guid: b5d727bf24509f54ea2460031f11ab96
     name: titleVol
   m_AudioMixerGroupViews:
@@ -328,7 +330,7 @@ AudioMixerSnapshotController:
   m_AudioMixer: {fileID: 24100000}
   m_SnapshotID: 0b220b50fe6f88844906b0585603df42
   m_FloatValues:
-    62c9db5ab9c367c43b114e557b4491b9: -3
+    62c9db5ab9c367c43b114e557b4491b9: -20
     e2e5a67ac15fe5643851ff3528449b56: -6
     f3ede40dcce829e4082a0e4a55903eab: -40
   m_TransitionOverrides: {}
