@@ -603,7 +603,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6798266382042806943, guid: 831a7175529d6bb4b811e3bc92d22a99, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -6.5
+      value: -6.847
       objectReference: {fileID: 0}
     - target: {fileID: 6798266382042806943, guid: 831a7175529d6bb4b811e3bc92d22a99, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1236,11 +1236,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6798266382042806943, guid: 831a7175529d6bb4b811e3bc92d22a99, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -92.55
+      value: -92.684
       objectReference: {fileID: 0}
     - target: {fileID: 6798266382042806943, guid: 831a7175529d6bb4b811e3bc92d22a99, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 13.29
+      value: 12.612
       objectReference: {fileID: 0}
     - target: {fileID: 6798266382042806943, guid: 831a7175529d6bb4b811e3bc92d22a99, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1560,7 +1560,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6798266382042806943, guid: 831a7175529d6bb4b811e3bc92d22a99, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.06999999
+      value: -0.191
       objectReference: {fileID: 0}
     - target: {fileID: 6798266382042806943, guid: 831a7175529d6bb4b811e3bc92d22a99, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1660,8 +1660,16 @@ PrefabInstance:
       value: LitDoor
       objectReference: {fileID: 0}
     - target: {fileID: 7172486213596787474, guid: 56ee23b75975e7543b854fd80aefeb7e, type: 3}
+      propertyPath: mixer
+      value: 
+      objectReference: {fileID: 24100000, guid: c2acff8789935ed4abffdbaae4de648b, type: 2}
+    - target: {fileID: 7172486213596787474, guid: 56ee23b75975e7543b854fd80aefeb7e, type: 3}
       propertyPath: scene
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7172486213596787474, guid: 56ee23b75975e7543b854fd80aefeb7e, type: 3}
+      propertyPath: exposedParameter
+      value: cliffVol
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3722,7 +3730,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6798266382042806943, guid: 831a7175529d6bb4b811e3bc92d22a99, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 27.5
+      value: 27.74
       objectReference: {fileID: 0}
     - target: {fileID: 6798266382042806943, guid: 831a7175529d6bb4b811e3bc92d22a99, type: 3}
       propertyPath: m_LocalPosition.z
