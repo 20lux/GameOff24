@@ -121,8 +121,8 @@ Material:
     m_Floats:
     - _AddPrecomputedVelocity: 0
     - _AdditionalLightHueFalloff: 0
-    - _AdditionalLightIntensityCurve: 0.43
-    - _AdditionalLightSaturationFalloff: 2.08
+    - _AdditionalLightIntensityCurve: 0.1
+    - _AdditionalLightSaturationFalloff: 0
     - _AlphaClip: 0
     - _AlphaToMask: 0
     - _AmbientLightStrength: 0
@@ -145,9 +145,9 @@ Material:
     - _GlossyReflections: 0
     - _HalftoneFalloffThreshold: 8
     - _HalftoneLightOffset: 1.29
-    - _HalftoneLightThreshold: 5
+    - _HalftoneLightThreshold: 6
     - _HalftonePatternScale: 1
-    - _HalftoneSoftness: 1.4
+    - _HalftoneSoftness: 4.5
     - _Metallic: 0
     - _NormalOffset: 0.1
     - _NormalStrength: 1
@@ -173,6 +173,6 @@ Material:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
-    - _TextureColor: {r: 1, g: 1, b: 1, a: 1}
+    - _TextureColor: {r: 0.81886786, g: 0.81886786, b: 0.81886786, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
