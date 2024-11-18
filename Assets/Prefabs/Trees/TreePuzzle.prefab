@@ -85,6 +85,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: RotatingTree
       objectReference: {fileID: 0}
+    - target: {fileID: 5404096476380150911, guid: 27b9e4166ba045c4580896ca94bd5939, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: d546763dfad4a214eb39a5a1aae6c47f, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
