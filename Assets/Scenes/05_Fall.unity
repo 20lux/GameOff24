@@ -1088,7 +1088,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6b5fed95d58cd34cbcd23b2b22c5cac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  yDegrees: -60
+  yDegrees: 60
   yCorrect: 90
 --- !u!1001 &414899275
 PrefabInstance:
@@ -2355,7 +2355,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6b5fed95d58cd34cbcd23b2b22c5cac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  yDegrees: -90
+  yDegrees: 90
   yCorrect: 90
 --- !u!82 &1015430476
 AudioSource:
@@ -2654,15 +2654,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 982609455826973843, guid: e1945d0e49bed444b8da414f187803da, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 982609455826973843, guid: e1945d0e49bed444b8da414f187803da, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 982609455826973843, guid: e1945d0e49bed444b8da414f187803da, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -75
       objectReference: {fileID: 0}
     - target: {fileID: 1017349066187302701, guid: e1945d0e49bed444b8da414f187803da, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -2718,11 +2718,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4990551714433581360, guid: e1945d0e49bed444b8da414f187803da, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4990551714433581360, guid: e1945d0e49bed444b8da414f187803da, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6967771079495175781, guid: e1945d0e49bed444b8da414f187803da, type: 3}
       propertyPath: m_BackGroundColor.b
@@ -3649,7 +3649,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6b5fed95d58cd34cbcd23b2b22c5cac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  yDegrees: -30
+  yDegrees: 30
   yCorrect: 90
 --- !u!1001 &1938656901
 PrefabInstance:
