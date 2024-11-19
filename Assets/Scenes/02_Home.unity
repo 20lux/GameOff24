@@ -5326,6 +5326,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 755695965322710097, guid: e1945d0e49bed444b8da414f187803da, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 982609455826973843, guid: e1945d0e49bed444b8da414f187803da, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -5378,49 +5382,29 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1479783704249065264, guid: e1945d0e49bed444b8da414f187803da, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: -0.8420647
-      objectReference: {fileID: 0}
-    - target: {fileID: 1479783704249065264, guid: e1945d0e49bed444b8da414f187803da, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0.53937656
-      objectReference: {fileID: 0}
-    - target: {fileID: 1479783704249065264, guid: e1945d0e49bed444b8da414f187803da, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 65.282
-      objectReference: {fileID: 0}
-    - target: {fileID: 1744372966965656798, guid: e1945d0e49bed444b8da414f187803da, type: 3}
-      propertyPath: m_RenderPostProcessing
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3214785052211819094, guid: e1945d0e49bed444b8da414f187803da, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.087
-      objectReference: {fileID: 0}
-    - target: {fileID: 3214785052211819094, guid: e1945d0e49bed444b8da414f187803da, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0.035
-      objectReference: {fileID: 0}
-    - target: {fileID: 3289266128829538716, guid: e1945d0e49bed444b8da414f187803da, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3891666346001932807, guid: e1945d0e49bed444b8da414f187803da, type: 3}
       propertyPath: m_Name
       value: PlayerController
       objectReference: {fileID: 0}
-    - target: {fileID: 4238228992912999903, guid: e1945d0e49bed444b8da414f187803da, type: 3}
-      propertyPath: field of view
-      value: 33
-      objectReference: {fileID: 0}
-    - target: {fileID: 4238228992912999903, guid: e1945d0e49bed444b8da414f187803da, type: 3}
-      propertyPath: m_FOVAxisMode
+    - target: {fileID: 4300005200097483802, guid: e1945d0e49bed444b8da414f187803da, type: 3}
+      propertyPath: m_Volume
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4627740724142574997, guid: e1945d0e49bed444b8da414f187803da, type: 3}
-      propertyPath: m_Type
-      value: 2
+    - target: {fileID: 4300005200097483802, guid: e1945d0e49bed444b8da414f187803da, type: 3}
+      propertyPath: m_Resource
+      value: 
+      objectReference: {fileID: 8300000, guid: 14317d879a65f2944b3b3fcd114c2902, type: 3}
+    - target: {fileID: 4300005200097483802, guid: e1945d0e49bed444b8da414f187803da, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 14317d879a65f2944b3b3fcd114c2902, type: 3}
+    - target: {fileID: 4300005200097483802, guid: e1945d0e49bed444b8da414f187803da, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: -3566110352323104311, guid: c2acff8789935ed4abffdbaae4de648b, type: 2}
+    - target: {fileID: 4545789890909530249, guid: e1945d0e49bed444b8da414f187803da, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4990551714433581360, guid: e1945d0e49bed444b8da414f187803da, type: 3}
       propertyPath: m_AnchorMax.y
@@ -5429,6 +5413,18 @@ PrefabInstance:
     - target: {fileID: 4990551714433581360, guid: e1945d0e49bed444b8da414f187803da, type: 3}
       propertyPath: m_AnchorMin.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7303048142563814816, guid: e1945d0e49bed444b8da414f187803da, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7698234462376127351, guid: e1945d0e49bed444b8da414f187803da, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 9045265375641938426, guid: e1945d0e49bed444b8da414f187803da, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
