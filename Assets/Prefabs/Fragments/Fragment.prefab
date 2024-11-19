@@ -202,7 +202,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b0c8eab1121f274da1635a44e9af0ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animatedObjects: []
+  animatedObjects:
+  - {fileID: 0}
   staticObjects: []
   capture: {fileID: 8300000, guid: 69e4aa9ab2bc8ab4db8ce86aba252006, type: 3}
   loop: {fileID: 8300000, guid: 04c7335478d6f874482bad923185efa2, type: 3}

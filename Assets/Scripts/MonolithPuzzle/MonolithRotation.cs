@@ -2,87 +2,57 @@ using UnityEngine;
 
 public class MonolithRotation : MonoBehaviour
 {
-    public enum AmountToRotate
-    {
-        Fortyfive,
-        Ninety,
-        OneThirtyFive
-    }
 
-    [Tooltip("Number of degrees for the monolith to turn - ideally unique values")]
-    public AmountToRotate amountToRotate;
-    [Tooltip("Speed at which the monolith turns")]
-    public float speed = 1f;
-    [Tooltip("Add sound of monolith rotating")]
-    public AudioSource audioSource;
-    [Tooltip("Checked - clockwise, unchecked - counterclockwise")]
-    public bool rotationIsClockwise = false;
+    [Tooltip("Enter degrees for monolith to rotate each round - should be unique to each monolith and value of 45, 90 or 135")]
+    public float yDegrees = 45;
+    private AudioSource audioSource;
+    private const float XVAL = 0;
+    private const float ZVAL = -90;
+    public float yCorrect = 90f;
+
+    private Quaternion initialRotation = Quaternion.identity;
+    private Quaternion nextRotation;
+    private Quaternion currentRotation;
     private bool isRotating = false;
-    private float finalRotation;
-    private float initialRotation;
 
     void Start()
     {
-        initialRotation = transform.rotation.y;
-        finalRotation = transform.rotation.y + DegreeToRotate();
-        speed = audioSource.clip.length;
+        audioSource = GetComponent<AudioSource>();
+        currentRotation = initialRotation;
+        nextRotation = currentRotation;
     }
 
     void Update()
     {
         if (isRotating)
         {
-            while (initialRotation >= finalRotation)
-            {
-                initialRotation += Time.deltaTime * speed;
-                transform.rotation = Quaternion.Euler(0, initialRotation, 0);
-            }
-
+            transform.rotation = nextRotation;
+            CheckIfCorrect();
             isRotating = false;
         }
     }
 
-    public void InitateRotate()
+    public void ResetRotations()
     {
-        isRotating = true;
+        transform.rotation = initialRotation;
     }
 
-    int DegreeToRotate()
+    void CheckIfCorrect()
     {
-        var degInit = 0;
-        switch (amountToRotate)
+        if (transform.rotation.y == yCorrect)
         {
-            case AmountToRotate.Fortyfive:
-                if (rotationIsClockwise)
-                {
-                    degInit = 45;
-                }
-                else
-                {
-                    degInit = -45;
-                }
-                break;
-            case AmountToRotate.Ninety:
-                if (rotationIsClockwise)
-                {
-                    degInit = 90;
-                }
-                else
-                {
-                    degInit = -90;
-                }
-                break;
-            case AmountToRotate.OneThirtyFive:
-                if (rotationIsClockwise)
-                {
-                    degInit = 135;
-                }
-                else
-                {
-                    degInit = -135;
-                }
-                break;
+            Debug.Log("Correct orientation!");
         }
-        return degInit;
+    }
+
+    public void InitiateRotate()
+    {
+        isRotating = true;
+        audioSource.Play();
+        Debug.Log("Initiating rotation!");
+
+        var yToTurn = nextRotation.eulerAngles.y + yDegrees;
+        nextRotation = Quaternion.Euler(XVAL, yToTurn, ZVAL);
+        Debug.Log("Turned " + yDegrees + " degrees on Y axis!");
     }
 }
