@@ -70,7 +70,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _HalftonePattern:
-        m_Texture: {fileID: 2800000, guid: 36d69e3481b51224fa7a1c87eb7737f8, type: 3}
+        m_Texture: {fileID: 2800000, guid: 56525a6f079aa0941ab7f1b4c666ad15, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
@@ -94,7 +94,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SeemlessPattern:
-        m_Texture: {fileID: 2800000, guid: 9c159d587d8eb5e4fafbc6204c801519, type: 3}
+        m_Texture: {fileID: 2800000, guid: 7755958f1f12ff64a979314adf1417a1, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SpecGlossMap:
@@ -102,7 +102,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _TexturePattern:
-        m_Texture: {fileID: 2800000, guid: 36d69e3481b51224fa7a1c87eb7737f8, type: 3}
+        m_Texture: {fileID: 2800000, guid: d571c2bf70785c54c95376f1ea5a2298, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
@@ -146,8 +146,8 @@ Material:
     - _HalftoneFalloffThreshold: 8
     - _HalftoneLightOffset: 1.29
     - _HalftoneLightThreshold: 6
-    - _HalftonePatternScale: 10
-    - _HalftoneSoftness: 4.5
+    - _HalftonePatternScale: 30
+    - _HalftoneSoftness: 4
     - _Metallic: 0
     - _NormalOffset: 0.1
     - _NormalStrength: 1
@@ -158,7 +158,7 @@ Material:
     - _SeemlessPatternNormalOffset: 0.15
     - _SeemlessPatternNormalStrength: 0.25
     - _SeemlessPatternScale: 10
-    - _SeemlessTextureScale: 10
+    - _SeemlessTextureScale: 100
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
