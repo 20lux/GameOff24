@@ -274,7 +274,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scene: 1
-  speed: 1
+  speed: 0.5
   mixer: {fileID: 24100000, guid: c2acff8789935ed4abffdbaae4de648b, type: 2}
   exposedParameter: titleVol
   targetVol: 0
