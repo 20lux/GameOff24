@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5558355591832703094}
   - component: {fileID: 7141293499831144286}
   - component: {fileID: 4773138173447262960}
-  - component: {fileID: 7604265531189852319}
+  - component: {fileID: 2296603395212564071}
   m_Layer: 0
   m_Name: H_CentrePlatform
   m_TagString: Untagged
@@ -87,7 +87,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &7604265531189852319
+--- !u!65 &2296603395212564071
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
