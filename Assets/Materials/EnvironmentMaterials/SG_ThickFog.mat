@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: SG_Fog
+  m_Name: SG_ThickFog
   m_Shader: {fileID: -6465566751694194690, guid: 3fb9c13c070ce73458e8399457d406bb, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -59,16 +59,16 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _ColourPower: 1
+    - _ColourPower: 12
     - _DepthFade: 20
-    - _FogHeight: 0.06
+    - _FogHeight: 0.03
     - _QueueControl: 0
     - _QueueOffset: 0
     m_Colors:
-    - _DotProduct: {r: 0, g: 0.86, b: 0, a: 0}
+    - _DotProduct: {r: 0, g: 0, b: 0, a: 0}
     - _FogDirection: {r: 0, g: 0, b: 0, a: 0}
     - _FogNoiseOffsetSpeed: {r: 0.009, g: 0.005, b: 0, a: 0}
     - _FogNoiseTile: {r: 2, g: 4, b: 0, a: 0}
-    - _Noise: {r: 2.69, g: 1.63, b: 0, a: 0}
+    - _Noise: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
