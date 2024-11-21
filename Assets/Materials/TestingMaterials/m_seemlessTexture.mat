@@ -70,7 +70,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _HalftonePattern:
-        m_Texture: {fileID: 2800000, guid: 36d69e3481b51224fa7a1c87eb7737f8, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
@@ -102,7 +102,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _TexturePattern:
+<<<<<<< HEAD
         m_Texture: {fileID: 2800000, guid: 36d69e3481b51224fa7a1c87eb7737f8, type: 3}
+=======
+        m_Texture: {fileID: 2800000, guid: 9c159d587d8eb5e4fafbc6204c801519, type: 3}
+>>>>>>> main
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
@@ -121,7 +125,11 @@ Material:
     m_Floats:
     - _AddPrecomputedVelocity: 0
     - _AdditionalLightHueFalloff: 0
+<<<<<<< HEAD
     - _AdditionalLightIntensityCurve: 0.13
+=======
+    - _AdditionalLightIntensityCurve: 0.22
+>>>>>>> main
     - _AdditionalLightSaturationFalloff: 0
     - _AlphaClip: 0
     - _AlphaToMask: 0
@@ -173,6 +181,10 @@ Material:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
+<<<<<<< HEAD
     - _TextureColor: {r: 0.81886786, g: 0.81886786, b: 0.81886786, a: 1}
+=======
+    - _TextureColor: {r: 0.49056602, g: 0.49056602, b: 0.49056602, a: 1}
+>>>>>>> main
   m_BuildTextureStacks: []
   m_AllowLocking: 1
