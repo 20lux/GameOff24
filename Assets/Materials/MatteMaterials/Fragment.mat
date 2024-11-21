@@ -55,7 +55,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _EmissionTexture:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: ed560613231ae2b4a9e25f3d9286ebc8, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _HalftonePattern:
@@ -135,9 +135,16 @@ Material:
     - _GlossyReflections: 0
     - _HalftoneFalloffThreshold: 0
     - _HalftoneLightThreshold: 0
+    - _HalftonePatternScale: 1
     - _HalftoneSoftness: 1
+    - _HighlightColFreq: 1
+    - _HighlightColMag: 0.5
     - _HighlightFreq: 10
     - _HighlightMag: 0.5
+    - _HighlightPosFreq: 1
+    - _HighlightPosMag: 0.5
+    - _HighlightSinOffset: 1
+    - _IsHighlighting: 1
     - _Metallic: 0
     - _Mode: 0
     - _NormalOffset: 0.1
@@ -155,6 +162,8 @@ Material:
     - _SrcBlend: 1
     - _SrcBlendAlpha: 1
     - _Surface: 0
+    - _UseEmission: 0
+    - _UseHalftone: 0
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
