@@ -122,6 +122,8 @@ Shader "Unlit/s_seemlessTextures"
 
             #pragma multi_compile _ _ADDITIONAL_LIGHT_SHADOWS
 
+            #pragma multi_compile _ _LIGHT_COOKIES
+
             #pragma multi_compile _ _MAIN_LIGHT_SHADOWS _MAIN_LIGHT_SHADOWS_CASCADE
 
             #pragma multi_compile _ UNITY_COLORSPACE_GAMMA
