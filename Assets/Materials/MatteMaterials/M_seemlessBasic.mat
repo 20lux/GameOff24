@@ -109,7 +109,7 @@ Material:
     m_Floats:
     - _AddPrecomputedVelocity: 0
     - _AdditionalLightHueFalloff: 180
-    - _AdditionalLightIntensityCurve: 1
+    - _AdditionalLightIntensityCurve: 0.48
     - _AdditionalLightSaturationFalloff: 1
     - _AlphaClip: 0
     - _AlphaToMask: 0
