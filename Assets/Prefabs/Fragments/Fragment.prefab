@@ -71,7 +71,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: b066ec5cf304df54a90eb3bb210d31f0, type: 2}
+  - {fileID: 2100000, guid: d546763dfad4a214eb39a5a1aae6c47f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -202,7 +202,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b0c8eab1121f274da1635a44e9af0ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animatedObjects: []
+  animatedObjects:
+  - {fileID: 0}
   staticObjects: []
   capture: {fileID: 8300000, guid: 69e4aa9ab2bc8ab4db8ce86aba252006, type: 3}
   loop: {fileID: 8300000, guid: 04c7335478d6f874482bad923185efa2, type: 3}
@@ -289,7 +290,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
