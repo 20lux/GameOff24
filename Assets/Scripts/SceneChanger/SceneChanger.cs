@@ -25,6 +25,8 @@ public class SceneChanger : MonoBehaviour
     public string exposedParameter;
     [Tooltip("Target volume of final fade")]
     public float targetVol = 0;
+    [Tooltip("Colour of fade")]
+    public Color color;
     private BoxCollider bc;
 
     void Start()
@@ -42,32 +44,32 @@ public class SceneChanger : MonoBehaviour
                 case Scene.Home:
                     StartCoroutine(FadeMixerGroup.StartFade(mixer, 
                         exposedParameter, speed, targetVol));
-                    Initiate.Fade("02_Home", Color.black, speed);
+                    Initiate.Fade("02_Home", color, speed);
                     break;
                 case Scene.Forest:
                     StartCoroutine(FadeMixerGroup.StartFade(mixer, 
                         exposedParameter, speed, targetVol));
-                    Initiate.Fade("03_Forest", Color.black, speed);
+                    Initiate.Fade("03_Forest", color, speed);
                     break;
                 case Scene.Cliff:
                     StartCoroutine(FadeMixerGroup.StartFade(mixer, 
                         exposedParameter, speed, targetVol));
-                    Initiate.Fade("04_Cliff", Color.black, speed);
+                    Initiate.Fade("04_Cliff", color, speed);
                     break;
                 case Scene.Fall:
                     StartCoroutine(FadeMixerGroup.StartFade(mixer, 
                         exposedParameter, speed, targetVol));
-                    Initiate.Fade("05_Fall", Color.black, speed);
+                    Initiate.Fade("05_Fall", color, speed);
                     break;
                 case Scene.End:
                     StartCoroutine(FadeMixerGroup.StartFade(mixer, 
                         exposedParameter, speed, targetVol));
-                    Initiate.Fade("06_End", Color.black, speed);
+                    Initiate.Fade("06_End", color, speed);
                     break;
                 default:
                     StartCoroutine(FadeMixerGroup.StartFade(mixer, 
                         exposedParameter, speed, targetVol));
-                    Initiate.Fade("01_Title", Color.black, speed);
+                    Initiate.Fade("01_Title", color, speed);
                     break;
             }
         }
