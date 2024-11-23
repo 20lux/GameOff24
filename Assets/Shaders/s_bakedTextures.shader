@@ -166,6 +166,8 @@ Shader "Unlit/s_bakedTextures"
             // This is used during shadow map generation to differentiate between directional and punctual light shadows, as they use different formulas to apply Normal Bias
             #pragma multi_compile_vertex _ _CASTING_PUNCTUAL_LIGHT_SHADOW
 
+            #pragma multi_compile _ _LIGHT_COOKIES
+
                 v2f vert (appdata_full v)
                 {
                     v2f o;
