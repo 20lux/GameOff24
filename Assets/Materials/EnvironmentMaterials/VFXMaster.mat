@@ -60,7 +60,7 @@ Material:
         m_Scale: {x: 1, y: 2}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 5ce193e0617683342b9bd4f44adc8a8d, type: 3}
+        m_Texture: {fileID: 2800000, guid: 4690a9bd455e0b048a7384e3fcb96419, type: 3}
         m_Scale: {x: 1, y: 2}
         m_Offset: {x: -0.01, y: -0.38}
     - _MetallicGlossMap:
@@ -105,14 +105,14 @@ Material:
     - _Blend: 0
     - _BlendModePreserveSpecular: 1
     - _BumpScale: 1
-    - _BurnSize: 3.98
+    - _BurnSize: 1
     - _CircleMask: 0
     - _ClearCoatMask: 0
     - _ClearCoatSmoothness: 0
     - _Contrast: 1.33
     - _Cull: 2
     - _Culling: 2
-    - _Cutoff: 0.14
+    - _Cutoff: 0.36
     - _DetailAlbedoMapScale: 1
     - _DetailNormalMapScale: 1
     - _DisplacementAmount: 0.5
@@ -144,7 +144,7 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
-    - _BurnCol: {r: 1.1245282, g: 1.1245282, b: 1.1245282, a: 1}
+    - _BurnCol: {r: 0.025848428, g: 0.025848428, b: 0.025848428, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _PanningSpeed: {r: -0.001, g: -0.001, b: -0.001, a: 0.01}
