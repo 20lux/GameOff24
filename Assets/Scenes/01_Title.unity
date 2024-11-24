@@ -278,6 +278,7 @@ MonoBehaviour:
   mixer: {fileID: 24100000, guid: c2acff8789935ed4abffdbaae4de648b, type: 2}
   exposedParameter: titleVol
   targetVol: 0
+  color: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &652742171
 GameObject:
   m_ObjectHideFlags: 0
