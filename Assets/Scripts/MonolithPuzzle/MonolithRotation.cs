@@ -3,56 +3,57 @@ using UnityEngine;
 public class MonolithRotation : MonoBehaviour
 {
 
-    [Tooltip("Enter degrees for monolith to rotate each round - should be unique to each monolith and value of 45, 90 or 135")]
-    public float yDegrees = 45;
+    [Tooltip("Enter degrees for monolith to rotate each round - should be unique to each monolith and value of 30, 60 or 90")]
+    public float yDegrees = 30;
+    public float[] rotationArray = new float[12];
+    private Quaternion startRotation;
     private AudioSource audioSource;
     private const float XVAL = 0;
     private const float ZVAL = -90;
     public float yCorrect = 90f;
-
-    private Quaternion initialRotation = Quaternion.identity;
-    private Quaternion nextRotation;
-    private Quaternion currentRotation;
-    private bool isRotating = false;
+    private int count;
+    public bool isCorrect = false;
 
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
-        currentRotation = initialRotation;
-        nextRotation = currentRotation;
+        startRotation = transform.rotation;
     }
 
     void Update()
     {
-        if (isRotating)
+        if (transform.rotation.y > 360)
         {
-            transform.rotation = nextRotation;
-            CheckIfCorrect();
-            isRotating = false;
+            ResetRotations();
         }
     }
 
     public void ResetRotations()
     {
-        transform.rotation = initialRotation;
+        transform.rotation = startRotation;
     }
 
-    void CheckIfCorrect()
+    public void CheckIfCorrect()
     {
-        if (transform.rotation.y == yCorrect)
+        if (yCorrect == rotationArray[count])
         {
-            Debug.Log("Correct orientation!");
+            isCorrect = true;
         }
     }
 
     public void InitiateRotate()
     {
-        isRotating = true;
         audioSource.Play();
-        Debug.Log("Initiating rotation!");
 
-        var yToTurn = nextRotation.eulerAngles.y + yDegrees;
-        nextRotation = Quaternion.Euler(XVAL, yToTurn, ZVAL);
-        Debug.Log("Turned " + yDegrees + " degrees on Y axis!");
+        if(count < 12)
+        {
+            transform.rotation = Quaternion.Euler(XVAL, rotationArray[count], ZVAL);
+            count++;
+        }
+        else
+        {
+            count = 0;
+            transform.rotation = Quaternion.Euler(XVAL, rotationArray[count], ZVAL);
+        }
     }
 }
