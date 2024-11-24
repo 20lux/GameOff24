@@ -863,6 +863,7 @@ GameObject:
   - component: {fileID: 6692388926247183842}
   - component: {fileID: 5155889003492612935}
   - component: {fileID: 4472891546866903547}
+  - component: {fileID: 4853010833843011652}
   m_Layer: 0
   m_Name: PlayerController
   m_TagString: Player
@@ -1013,6 +1014,35 @@ MonoBehaviour:
   celestialBody: {fileID: 0}
   rotationSpeed: 15
   isActive: 0
+--- !u!114 &4853010833843011652
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3891666346001932807}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9659dc99a5c131545af861643b789f7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CheatCode: 00010000
+  CheatEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4853010833843011652}
+        m_TargetAssemblyTypeName: CheatInput, Assembly-CSharp
+        m_MethodName: Cheat
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  AllowedDelay: 1
 --- !u!1 &4422989662206433527
 GameObject:
   m_ObjectHideFlags: 0
