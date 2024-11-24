@@ -1,6 +1,8 @@
 using UnityEngine;
-using UnityEditor;
 using System;
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 
 public class BasicInverseKinematics : MonoBehaviour
 {
@@ -177,6 +179,7 @@ public class BasicInverseKinematics : MonoBehaviour
         }
     }
 
+    #if UNITY_EDITOR
     void OnDrawGizmos()
     {
         if (enableGizmos)
@@ -196,4 +199,5 @@ public class BasicInverseKinematics : MonoBehaviour
             }
         }
     }
+#endif
 }
