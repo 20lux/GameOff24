@@ -6,9 +6,12 @@ namespace TheFall.MovingPlatforms
     public class MovingPlatforms : MonoBehaviour
     {
         private AudioSource audioSource;
+        private Animator animator;
+        private bool hasActivated = false;
 
         void Start()
         {
+            animator = GetComponent<Animator>();
             audioSource = GetComponent<AudioSource>();
             audioSource.playOnAwake = false;
         }
@@ -17,6 +20,15 @@ namespace TheFall.MovingPlatforms
         {
             audioSource.loop = false;
             audioSource.Play();
+        }
+
+        void Update()
+        {
+            if (animator.GetBool("Activate") && !hasActivated)
+            {
+                PlaySoundOnActivate();
+                hasActivated = true;
+            }
         }
     }
 }
