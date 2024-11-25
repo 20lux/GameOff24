@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: VFXApprentice
+  m_Name: ForestFragment
   m_Shader: {fileID: 4800000, guid: efd83e97e548f5e49accce7edb13faf5, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0

@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Fog
+  m_Name: CliffFragment
   m_Shader: {fileID: -6465566751694194690, guid: 3fb9c13c070ce73458e8399457d406bb, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -59,9 +59,9 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _ColourPower: 5.82
-    - _DepthFade: 42.01
-    - _FogHeight: 0.05
+    - _ColourPower: 7.54
+    - _DepthFade: 7.13
+    - _FogHeight: 0.08
     - _QueueControl: 0
     - _QueueOffset: 0
     m_Colors:

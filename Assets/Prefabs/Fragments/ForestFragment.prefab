@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 2885035330115917274}
   - component: {fileID: -1078571686156209944}
   m_Layer: 6
-  m_Name: WarpedFragment
+  m_Name: ForestFragment
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -71,7 +71,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 01f5b9d39874b174d836884dc9e73ce5, type: 2}
+  - {fileID: 2100000, guid: 041f0f6b73a78214fad133ddbff6a239, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -239,18 +239,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: -1078571686156209944}
-        m_TargetAssemblyTypeName: UpdatePlayerLocation, Assembly-CSharp
-        m_MethodName: UpdatePlayerPosition
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 3483691573322305041}
         m_TargetAssemblyTypeName: TheFall.FragmentController.FragmentCaptured, Assembly-CSharp
         m_MethodName: DestroyFragment
@@ -282,8 +270,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 5, y: 5, z: 5}
-  m_Center: {x: -0.00000032411444, y: -0.00008313535, z: 0.000061014536}
+  m_Size: {x: 1.9999988, y: 1.9999995, z: 2.0000002}
+  m_Center: {x: -0.00000032782555, y: -0.00006070733, z: 0.000061035156}
 --- !u!114 &2885035330115917274
 MonoBehaviour:
   m_ObjectHideFlags: 0
