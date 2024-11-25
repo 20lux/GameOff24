@@ -9,5 +9,6 @@
 * Create a pull request for git admin to review and marge or resolve conflicts
 
 ## References
-https://www.dafont.com/droid.font?l[]=10&l[]=1
-https://www.soundsnap.com/concrete_stone_bumpy_drag_and_grind_2
+* https://www.dafont.com/droid.font?l[]=10&l[]=1
+* https://www.soundsnap.com/concrete_stone_bumpy_drag_and_grind_2
+* https://opengameart.org/content/flashlight-pattern-incandescent
