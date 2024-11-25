@@ -1464,21 +1464,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   yDegrees: 60
-  rotationArray:
-  - 150
-  - 210
-  - 270
-  - 330
-  - 30
-  - 90
-  - 150
-  - 210
-  - 270
-  - 330
-  - 30
-  - 90
-  yCorrect: 90
-  isCorrect: 0
 --- !u!1001 &413683778
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3488,21 +3473,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   yDegrees: 90
-  rotationArray:
-  - 180
-  - 270
-  - 0
-  - 90
-  - 180
-  - 270
-  - 0
-  - 90
-  - 180
-  - 270
-  - 0
-  - 90
-  yCorrect: 90
-  isCorrect: 0
 --- !u!82 &1015430476
 AudioSource:
   m_ObjectHideFlags: 0
@@ -5749,21 +5719,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   yDegrees: 30
-  rotationArray:
-  - 120
-  - 150
-  - 180
-  - 210
-  - 240
-  - 270
-  - 300
-  - 330
-  - 0
-  - 30
-  - 60
-  - 90
-  yCorrect: 90
-  isCorrect: 0
 --- !u!1001 &1910179547
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5970,6 +5925,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2000859403}
+  - component: {fileID: 2000859404}
   m_Layer: 0
   m_Name: FinalPlinth
   m_TagString: Untagged
@@ -5993,6 +5949,19 @@ Transform:
   - {fileID: 6937393835202309299}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!114 &2000859404
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2000859402}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58ccfc5e474f2f74d9990f49b395ede8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  list: []
 --- !u!64 &2040147862
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -6404,13 +6373,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8340930988482909126}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.38268343, y: 0, z: 0, w: 0.92387956}
+  m_LocalRotation: {x: 0.3826836, y: -0, z: -0, w: -0.92387944}
   m_LocalPosition: {x: 0.12, y: 1, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6937393835202309299}
-  m_LocalEulerAnglesHint: {x: -45, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 315, y: 0, z: 0}
 --- !u!33 &1963649252842949832
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -6466,13 +6435,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3810185471347302954}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.3826832, y: -0, z: -0.000000014901163, w: 0.9238797}
+  m_LocalRotation: {x: 0.3826836, y: -0, z: -0, w: -0.92387944}
   m_LocalPosition: {x: -0, y: 1.093, z: -0.093}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6937393835202309299}
-  m_LocalEulerAnglesHint: {x: -45, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 315, y: 0, z: 0}
 --- !u!23 &2328133202609230399
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -6633,6 +6602,7 @@ GameObject:
   - component: {fileID: 3810185471347302957}
   - component: {fileID: 3810185471347302956}
   - component: {fileID: 3810185471347302955}
+  - component: {fileID: 3810185471347302958}
   m_Layer: 6
   m_Name: Dial01
   m_TagString: Untagged
@@ -6653,6 +6623,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   monolithRotation: {fileID: 1866680093}
+  correctRotation: 150
+  checkIfCorrect: {fileID: 2000859404}
 --- !u!65 &3810185471347302956
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6686,7 +6658,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: adb771eb3b258eb43935e4732564a3bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  displayMessage: 
+  displayMessage: 'Rotate Dial [E]'
   onInteraction:
     m_PersistentCalls:
       m_Calls:
@@ -6702,6 +6674,139 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 3810185471347302955}
+        m_TargetAssemblyTypeName: DialRotation, Assembly-CSharp
+        m_MethodName: RotateDial
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 3810185471347302955}
+        m_TargetAssemblyTypeName: DialRotation, Assembly-CSharp
+        m_MethodName: CheckIfCorrect
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2000859404}
+        m_TargetAssemblyTypeName: CheckIfCorrect, Assembly-CSharp
+        m_MethodName: InitiateEnd
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!82 &3810185471347302958
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3810185471347302954}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 2198093747487618861, guid: c2acff8789935ed4abffdbaae4de648b, type: 2}
+  m_audioClip: {fileID: 8300000, guid: 69e4aa9ab2bc8ab4db8ce86aba252006, type: 3}
+  m_Resource: {fileID: 8300000, guid: 69e4aa9ab2bc8ab4db8ce86aba252006, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &3872218805395477693
 GameObject:
   m_ObjectHideFlags: 0
@@ -7073,6 +7178,7 @@ GameObject:
   - component: {fileID: 8749424885237676690}
   - component: {fileID: 8749424885237676689}
   - component: {fileID: 8749424885237676688}
+  - component: {fileID: 8749424885237676691}
   m_Layer: 6
   m_Name: Dial03
   m_TagString: Untagged
@@ -7256,8 +7362,8 @@ Transform:
   m_Children: []
   m_Father: {fileID: 6937393835202309299}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!64 &7697427752243419742
-MeshCollider:
+--- !u!65 &7697427752243419742
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -7274,10 +7380,9 @@ MeshCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -3103079170706471145, guid: e42434f2ed952664b9ace5620426638d, type: 3}
+  serializedVersion: 3
+  m_Size: {x: 0.7603741, y: 0.8648063, z: 1.5108056}
+  m_Center: {x: 0, y: 0.428513, z: 0.37650156}
 --- !u!1 &7713894594240820745
 GameObject:
   m_ObjectHideFlags: 0
@@ -7355,13 +7460,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5902007016657979507}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.38268343, y: 0, z: 0, w: 0.92387956}
+  m_LocalRotation: {x: 0.3826836, y: -0, z: -0, w: -0.92387944}
   m_LocalPosition: {x: -0.124, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6937393835202309299}
-  m_LocalEulerAnglesHint: {x: -45, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 315, y: 0, z: 0}
 --- !u!4 &7998083254142448561
 Transform:
   m_ObjectHideFlags: 0
@@ -7399,6 +7504,7 @@ GameObject:
   - component: {fileID: 8887797995529377691}
   - component: {fileID: 8887797995529377690}
   - component: {fileID: 8887797995529377689}
+  - component: {fileID: 8887797995529377692}
   m_Layer: 6
   m_Name: Dial02
   m_TagString: Untagged
@@ -7524,6 +7630,42 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 3810185471347302955}
+        m_TargetAssemblyTypeName: DialRotation, Assembly-CSharp
+        m_MethodName: ResetDial
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 8887797995529377689}
+        m_TargetAssemblyTypeName: DialRotation, Assembly-CSharp
+        m_MethodName: ResetDial
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 8749424885237676688}
+        m_TargetAssemblyTypeName: DialRotation, Assembly-CSharp
+        m_MethodName: ResetDial
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!33 &8468206771621104351
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -7598,6 +7740,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   monolithRotation: {fileID: 1015430475}
+  correctRotation: 90
+  checkIfCorrect: {fileID: 2000859404}
 --- !u!65 &8749424885237676689
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7631,7 +7775,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: adb771eb3b258eb43935e4732564a3bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  displayMessage: 
+  displayMessage: 'Rotate Dial [E]'
   onInteraction:
     m_PersistentCalls:
       m_Calls:
@@ -7647,6 +7791,139 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 8749424885237676688}
+        m_TargetAssemblyTypeName: DialRotation, Assembly-CSharp
+        m_MethodName: RotateDial
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 8749424885237676688}
+        m_TargetAssemblyTypeName: DialRotation, Assembly-CSharp
+        m_MethodName: CheckIfCorrect
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2000859404}
+        m_TargetAssemblyTypeName: CheckIfCorrect, Assembly-CSharp
+        m_MethodName: InitiateEnd
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!82 &8749424885237676691
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5902007016657979507}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 2198093747487618861, guid: c2acff8789935ed4abffdbaae4de648b, type: 2}
+  m_audioClip: {fileID: 8300000, guid: 69e4aa9ab2bc8ab4db8ce86aba252006, type: 3}
+  m_Resource: {fileID: 8300000, guid: 69e4aa9ab2bc8ab4db8ce86aba252006, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!23 &8887797995529377688
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -7705,6 +7982,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   monolithRotation: {fileID: 397392365}
+  correctRotation: 300
+  checkIfCorrect: {fileID: 2000859404}
 --- !u!65 &8887797995529377690
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7738,7 +8017,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: adb771eb3b258eb43935e4732564a3bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  displayMessage: 
+  displayMessage: 'Rotate Dial [E]'
   onInteraction:
     m_PersistentCalls:
       m_Calls:
@@ -7754,6 +8033,139 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 8887797995529377689}
+        m_TargetAssemblyTypeName: DialRotation, Assembly-CSharp
+        m_MethodName: RotateDial
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 8887797995529377689}
+        m_TargetAssemblyTypeName: DialRotation, Assembly-CSharp
+        m_MethodName: CheckIfCorrect
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2000859404}
+        m_TargetAssemblyTypeName: CheckIfCorrect, Assembly-CSharp
+        m_MethodName: InitiateEnd
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!82 &8887797995529377692
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8340930988482909126}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 2198093747487618861, guid: c2acff8789935ed4abffdbaae4de648b, type: 2}
+  m_audioClip: {fileID: 8300000, guid: 69e4aa9ab2bc8ab4db8ce86aba252006, type: 3}
+  m_Resource: {fileID: 8300000, guid: 69e4aa9ab2bc8ab4db8ce86aba252006, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
