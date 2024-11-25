@@ -121,7 +121,7 @@ Material:
     - _HalftoneFalloffThreshold: 3.2
     - _HalftoneLightThreshold: 2.5
     - _HalftonePatternScale: 20
-    - _HalftoneSoftness: 2
+    - _HalftoneSoftness: 1.25
     - _Metallic: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.005
@@ -137,7 +137,7 @@ Material:
     - _SrcBlend: 1
     - _SrcBlendAlpha: 1
     - _Surface: 0
-    - _UseHalftone: 1
+    - _UseHalftone: 0
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
