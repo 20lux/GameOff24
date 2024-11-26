@@ -7,15 +7,19 @@ namespace TheFall.FragmentController
     [RequireComponent(typeof(AudioSource))]
     public class FragmentCaptured : MonoBehaviour
     {
+        [Header("Objects to Change on Capture")]
         [Tooltip("Objects to animate after fragment is captured - usually platforms")]
         [SerializeField] private Animator[] animatedObjects;
         
         [Tooltip("Inactive objects to activate once fragment is captured - usually platforms")]
         [SerializeField] private GameObject[] staticObjects;
         [Tooltip("Audio clip to play when player captures the fragment")]
+        
+        [Header("Fragment Properties")]
         [SerializeField] private AudioClip capture;
         [Tooltip("Audio clip to loop for player proximity")]
         [SerializeField] private AudioClip loop;
+
         [Tooltip("To be used for SFX audio mixer group")]
         public AudioMixer mixer;
         [Tooltip("SFX audio mixer group exposed parameter")]
@@ -25,7 +29,6 @@ namespace TheFall.FragmentController
         [Tooltip("Target final volume of SFX - usually 0")]
         public float targetVol = 0;
         private AudioSource audioSource;
-
 
         void Start()
         {
