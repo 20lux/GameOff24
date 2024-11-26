@@ -24,6 +24,9 @@ EditorBuildSettings:
     path: Assets/Scenes/05_Fall.unity
     guid: b0662d0a9200759468d8bcab8f87b270
   - enabled: 1
+    path: Assets/Scenes/05a_FallCutScene.unity
+    guid: 9c28af7053f709746a9d6ab921c5acd5
+  - enabled: 1
     path: Assets/Scenes/06_End.unity
     guid: 516463a6f9495134298a4a0d7f74059e
   m_configObjects:
