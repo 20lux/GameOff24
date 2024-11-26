@@ -39,39 +39,69 @@ public class SceneChanger : MonoBehaviour
     {
         if (col.CompareTag("Player"))
         {
-            switch (scene)
-            {
-                case Scene.Home:
-                    StartCoroutine(FadeMixerGroup.StartFade(mixer, 
-                        exposedParameter, speed, targetVol));
-                    Initiate.Fade("02_Home", color, speed);
-                    break;
-                case Scene.Forest:
-                    StartCoroutine(FadeMixerGroup.StartFade(mixer, 
-                        exposedParameter, speed, targetVol));
-                    Initiate.Fade("03_Forest", color, speed);
-                    break;
-                case Scene.Cliff:
-                    StartCoroutine(FadeMixerGroup.StartFade(mixer, 
-                        exposedParameter, speed, targetVol));
-                    Initiate.Fade("04_Cliff", color, speed);
-                    break;
-                case Scene.Fall:
-                    StartCoroutine(FadeMixerGroup.StartFade(mixer, 
-                        exposedParameter, speed, targetVol));
-                    Initiate.Fade("05_Fall", color, speed);
-                    break;
-                case Scene.End:
-                    StartCoroutine(FadeMixerGroup.StartFade(mixer, 
-                        exposedParameter, speed, targetVol));
-                    Initiate.Fade("06_End", color, speed);
-                    break;
-                default:
-                    StartCoroutine(FadeMixerGroup.StartFade(mixer, 
-                        exposedParameter, speed, targetVol));
-                    Initiate.Fade("01_Title", color, speed);
-                    break;
-            }
+            ChangeSceneWithMixer();
+        }
+    }
+
+    void ChangeSceneWithMixer()
+    {
+        switch (scene)
+        {
+            case Scene.Home:
+                StartCoroutine(FadeMixerGroup.StartFade(mixer, 
+                    exposedParameter, speed, targetVol));
+                Initiate.Fade("02_Home", color, speed);
+                break;
+            case Scene.Forest:
+                StartCoroutine(FadeMixerGroup.StartFade(mixer, 
+                    exposedParameter, speed, targetVol));
+                Initiate.Fade("03_Forest", color, speed);
+                break;
+            case Scene.Cliff:
+                StartCoroutine(FadeMixerGroup.StartFade(mixer, 
+                    exposedParameter, speed, targetVol));
+                Initiate.Fade("04_Cliff", color, speed);
+                break;
+            case Scene.Fall:
+                StartCoroutine(FadeMixerGroup.StartFade(mixer, 
+                    exposedParameter, speed, targetVol));
+                Initiate.Fade("05_Fall", color, speed);
+                break;
+            case Scene.End:
+                StartCoroutine(FadeMixerGroup.StartFade(mixer, 
+                    exposedParameter, speed, targetVol));
+                Initiate.Fade("06_End", color, speed);
+                break;
+            default:
+                StartCoroutine(FadeMixerGroup.StartFade(mixer, 
+                    exposedParameter, speed, targetVol));
+                Initiate.Fade("01_Title", color, speed);
+                break;
+        }
+    }
+
+    public void ChangeSceneNoMixer()
+    {
+        switch (scene)
+        {
+            case Scene.Home:
+                Initiate.Fade("02_Home", color, speed);
+                break;
+            case Scene.Forest:
+                Initiate.Fade("03_Forest", color, speed);
+                break;
+            case Scene.Cliff:
+                Initiate.Fade("04_Cliff", color, speed);
+                break;
+            case Scene.Fall:
+                Initiate.Fade("05_Fall", color, speed);
+                break;
+            case Scene.End:
+                Initiate.Fade("06_End", color, speed);
+                break;
+            default:
+                Initiate.Fade("01_Title", color, speed);
+                break;
         }
     }
 }
