@@ -42,6 +42,19 @@ public class HelperScript
         return x;
     }
 
+    public static float EaseInOut(float x)
+    {
+        if(x < 0.5f)
+        {
+            return 0.5f * Square( x * 2 ); // Combine scaling and squaring in one step
+        } else
+        {
+            float inverseX = 1 - (x - 0.5f) * 2;
+            return 0.5f * (1 - Square( inverseX )) + 0.5f;
+        }
+    }
+
+
     public static float Saturate(float x)
     {
         return Mathf.Max(0, Mathf.Min(1, x));
