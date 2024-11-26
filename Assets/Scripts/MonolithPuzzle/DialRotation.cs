@@ -3,9 +3,12 @@ using UnityEngine;
 [RequireComponent(typeof(AudioSource))]
 public class DialRotation : MonoBehaviour
 {
+    [Header("Dial Properties")]
     [Tooltip("Used to associate a monolith with this dial")]
     public MonolithRotation monolithRotation;
     private Quaternion startState;
+
+    [Header("End Game Properties")]
     [Tooltip("Determines when the rotation is considered correct")]
     public float correctRotation;
     [Tooltip("Used to trigger final animation sequence")]
