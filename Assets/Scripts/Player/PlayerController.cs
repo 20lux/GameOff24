@@ -447,9 +447,10 @@ namespace BoomMicCity.PlayerController
 
             playerMovementDebugTMP.text = sb.ToString();
 
-            if (rb.linearVelocity.magnitude > 0)
+            // Only draw arrow if velocity is non-zero
+            if(rb.linearVelocity.sqrMagnitude > 0.0001f) // Use sqrMagnitude for performance
             {
-                DrawArrow(transform.position, rb.linearVelocity.normalized, .1f, .3f, Color.yellow);
+                DrawArrow( transform.position, rb.linearVelocity.normalized, .1f, .3f, Color.yellow );
             }
         }
 
