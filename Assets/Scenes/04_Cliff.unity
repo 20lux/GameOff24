@@ -5756,6 +5756,10 @@ PrefabInstance:
       propertyPath: m_Center.z
       value: -6.396474e-10
       objectReference: {fileID: 0}
+    - target: {fileID: 7172486213596787474, guid: 56ee23b75975e7543b854fd80aefeb7e, type: 3}
+      propertyPath: scene
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6029,6 +6033,7 @@ PrefabInstance:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 2076068796}
   - {fileID: 1492473144}
   - {fileID: 977942749}
   - {fileID: 56849856}
@@ -6109,4 +6114,3 @@ SceneRoots:
   - {fileID: 1072518249}
   - {fileID: 333578923}
   - {fileID: 1025734655}
-  - {fileID: 2076068796}
