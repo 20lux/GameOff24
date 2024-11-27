@@ -17,6 +17,8 @@ GameObject:
   - component: {fileID: 2885035330115917274}
   - component: {fileID: 5157755835062737382}
   - component: {fileID: 5892804711439162521}
+  - component: {fileID: 6616106689477639242}
+  - component: {fileID: 2277845831055956481}
   m_Layer: 6
   m_Name: Fragment
   m_TagString: Untagged
@@ -276,6 +278,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e542061d471ac244db7c97cee7fcdea4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentPlayerPos: {fileID: 0}
 --- !u!135 &5892804711439162521
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -297,6 +300,43 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 3
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!167 &6616106689477639242
+AudioReverbZone:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8847577839827064778}
+  m_Enabled: 1
+  m_MinDistance: 10
+  m_MaxDistance: 15
+  m_ReverbPreset: 12
+  m_Room: -1000
+  m_RoomHF: -4000
+  m_DecayTime: 0.3
+  m_DecayHFRatio: 0.1
+  m_Reflections: -1831
+  m_ReflectionsDelay: 0.002
+  m_Reverb: -1630
+  m_ReverbDelay: 0.03
+  m_HFReference: 5000
+  m_Diffusion: 100
+  m_Density: 100
+  m_LFReference: 250
+  m_RoomLF: 0
+--- !u!114 &2277845831055956481
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8847577839827064778}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e542061d471ac244db7c97cee7fcdea4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentPlayerPos: {fileID: 0}
 --- !u!1 &9166463337241955654
 GameObject:
   m_ObjectHideFlags: 0

@@ -6,7 +6,7 @@ public class AnimationEventSound : MonoBehaviour
 {
     [SerializeField] private AudioMixer mixer;
     [SerializeField] private AudioClip clip;
-    [SerializeField] private string exposedParam;
+    [SerializeField] private string exposedParam = "fxPitchShift";
     private AudioSource audioSource;
 
     void Start()
@@ -16,7 +16,7 @@ public class AnimationEventSound : MonoBehaviour
 
     public void PitchShift()
     {
-        mixer.SetFloat(exposedParam, Random.Range(0.5f, 1.0f));
+        mixer.SetFloat(exposedParam, Mathf.Clamp(Random.Range(0.1f, 1.0f) * Time.deltaTime, 0.5f, 1.0f));
     }
 
     public void PlayAudio()
