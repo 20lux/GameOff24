@@ -12,3 +12,5 @@
 * https://www.dafont.com/droid.font?l[]=10&l[]=1
 * https://www.soundsnap.com/concrete_stone_bumpy_drag_and_grind_2
 * https://opengameart.org/content/flashlight-pattern-incandescent
+* https://www.soundsnap.com/breezeblock_scraping24_wav
+* https://www.soundsnap.com/wood_creaking_tree_loud_15
