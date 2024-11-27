@@ -2,12 +2,15 @@ using UnityEngine;
 
 public class UpdatePlayerLocation : MonoBehaviour
 {
-    private Transform currentPlayerPos;
+    public GameObject currentPlayerPos;
+
+    void Start()
+    {
+        currentPlayerPos = GameObject.FindWithTag("PlayerPosition");
+    }
 
     public void UpdatePlayerPosition()
     {
-        var player = GameObject.FindWithTag("Player");
-        currentPlayerPos = player.transform;
-        transform.position = currentPlayerPos.position;
+        currentPlayerPos.transform.position = transform.position;
     }
 }
