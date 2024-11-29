@@ -46541,8 +46541,24 @@ PrefabInstance:
       value: -6.396474e-10
       objectReference: {fileID: 0}
     - target: {fileID: 7172486213596787474, guid: 56ee23b75975e7543b854fd80aefeb7e, type: 3}
+      propertyPath: mixer
+      value: 
+      objectReference: {fileID: 24100000, guid: c2acff8789935ed4abffdbaae4de648b, type: 2}
+    - target: {fileID: 7172486213596787474, guid: 56ee23b75975e7543b854fd80aefeb7e, type: 3}
       propertyPath: scene
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7172486213596787474, guid: 56ee23b75975e7543b854fd80aefeb7e, type: 3}
+      propertyPath: color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7172486213596787474, guid: 56ee23b75975e7543b854fd80aefeb7e, type: 3}
+      propertyPath: color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7172486213596787474, guid: 56ee23b75975e7543b854fd80aefeb7e, type: 3}
+      propertyPath: color.r
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
