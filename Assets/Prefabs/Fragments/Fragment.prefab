@@ -18,7 +18,6 @@ GameObject:
   - component: {fileID: 5157755835062737382}
   - component: {fileID: 5892804711439162521}
   - component: {fileID: 6616106689477639242}
-  - component: {fileID: 2277845831055956481}
   m_Layer: 6
   m_Name: Fragment
   m_TagString: Untagged
@@ -298,7 +297,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 3
+  m_Radius: 0.25
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!167 &6616106689477639242
 AudioReverbZone:
@@ -324,19 +323,6 @@ AudioReverbZone:
   m_Density: 100
   m_LFReference: 250
   m_RoomLF: 0
---- !u!114 &2277845831055956481
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8847577839827064778}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e542061d471ac244db7c97cee7fcdea4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentPlayerPos: {fileID: 0}
 --- !u!1 &9166463337241955654
 GameObject:
   m_ObjectHideFlags: 0
