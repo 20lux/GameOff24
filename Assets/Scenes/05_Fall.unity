@@ -4108,6 +4108,10 @@ PrefabInstance:
       propertyPath: m_fontColor32.rgba
       value: 4294967295
       objectReference: {fileID: 0}
+    - target: {fileID: 4472891546866903547, guid: e1945d0e49bed444b8da414f187803da, type: 3}
+      propertyPath: celestialBody
+      value: 
+      objectReference: {fileID: 284543842}
     - target: {fileID: 4990551714433581360, guid: e1945d0e49bed444b8da414f187803da, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -8061,6 +8065,7 @@ AudioSource:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 284543843}
   - {fileID: 475933005}
   - {fileID: 1256529024}
   - {fileID: 68738463}
@@ -8095,7 +8100,6 @@ SceneRoots:
   - {fileID: 963200852}
   - {fileID: 564666161068789279}
   - {fileID: 552152702}
-  - {fileID: 284543843}
   - {fileID: 192864362}
   - {fileID: 1015430472}
   - {fileID: 397392361}
