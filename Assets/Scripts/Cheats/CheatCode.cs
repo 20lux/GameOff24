@@ -30,6 +30,11 @@ public class CheatInput : MonoBehaviour
             {
                 ResetCheatInput();
             }
+
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                ResetPlayerPos();
+            }
         }
 
         if (_index == CheatCode.Length)
@@ -52,5 +57,13 @@ public class CheatInput : MonoBehaviour
             var currentScene = SceneManager.GetActiveScene();
             SceneManager.LoadSceneAsync(currentScene.buildIndex + 1);
         }
+    }
+
+    public void ResetPlayerPos()
+    {
+        var playerPos = GameObject.FindGameObjectWithTag("PlayerPosition").transform;
+        var player = GameObject.FindGameObjectWithTag("Player").transform;
+
+        player.position = playerPos.position;
     }
 }
