@@ -3,8 +3,6 @@ using UnityEngine;
 public class SundialController : MonoBehaviour
 {
     [SerializeField] private Animator sundialAnimator;
-    
-    private bool isRaised;
 
     public void RaiseSundial()
     {

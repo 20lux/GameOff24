@@ -30,6 +30,12 @@ namespace TheFall.FragmentController
         public float targetVol = 0;
         private AudioSource audioSource;
 
+        [Header("Celestial Body Control")]
+        [Tooltip("Value to rotate celestial body")]
+        public float rotation;
+        [Tooltip("Celestial rotation script")]
+        public CelestialController celestialController;
+
         void Start()
         {
             if (staticObjects.Length != 0)
@@ -44,6 +50,8 @@ namespace TheFall.FragmentController
             audioSource.clip = loop;
             audioSource.loop = true;
             audioSource.playOnAwake = true;
+
+            celestialController = GameObject.FindGameObjectWithTag("Player").GetComponent<CelestialController>();
         }
 
         public void OnFragmentCaptured()
@@ -51,6 +59,7 @@ namespace TheFall.FragmentController
             ActivateInactiveObjects();
             AnimateActivatedObjects();
             PlaySoundWhenCaptured();
+            CelestialControl();
         }
 
         public void DestroyFragment()
@@ -84,6 +93,11 @@ namespace TheFall.FragmentController
         {
             audioSource.PlayOneShot(capture);
             StartCoroutine(FadeMixerGroup.StartFade(mixer, exposedParam, duration, targetVol));
+        }
+
+        public void CelestialControl()
+        {
+            celestialController.RotateTo(rotation);
         }
     }
 }
