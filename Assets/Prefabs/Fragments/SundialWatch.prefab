@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 8307224502656572993}
   - component: {fileID: 8521880170176082172}
   - component: {fileID: 1422241407615394598}
+  - component: {fileID: 6253722356092898737}
   m_Layer: 6
   m_Name: SundialWatch
   m_TagString: Untagged
@@ -240,6 +241,8 @@ MonoBehaviour:
   exposedParam: sfxVol
   duration: 1
   targetVol: 0
+  rotation: 0
+  celestialController: {fileID: 0}
 --- !u!114 &1422241407615394598
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -250,6 +253,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e542061d471ac244db7c97cee7fcdea4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentPlayerPos: {fileID: 0}
+--- !u!114 &6253722356092898737
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6076923783495169627}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db67bc291073b5c49adc1fd5c9bcf75d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &8896246505651757403

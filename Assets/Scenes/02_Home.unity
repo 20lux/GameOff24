@@ -186,6 +186,28 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 9013389183670089668, guid: 1d4bfba4fec57c540ba5b9c963ab156f, type: 3}
   m_PrefabInstance: {fileID: 80442954}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &99283584 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8521880170176082172, guid: 421e658cc536fbc41b80095f482e9f32, type: 3}
+  m_PrefabInstance: {fileID: 7498410516462833111}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b0c8eab1121f274da1635a44e9af0ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &99283590 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6253722356092898737, guid: 421e658cc536fbc41b80095f482e9f32, type: 3}
+  m_PrefabInstance: {fileID: 7498410516462833111}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db67bc291073b5c49adc1fd5c9bcf75d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &106106289
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9832,6 +9854,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: MovingPlatformSmall (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 5840206336249890992, guid: 9de0bfe09ef7d4b4a93288b7f081bf0b, type: 3}
+      propertyPath: m_Size.y
+      value: 0.54351807
+      objectReference: {fileID: 0}
+    - target: {fileID: 5840206336249890992, guid: 9de0bfe09ef7d4b4a93288b7f081bf0b, type: 3}
+      propertyPath: m_Center.y
+      value: -0.012245178
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -9988,6 +10018,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 338480527}
     m_Modifications:
+    - target: {fileID: 2670700188124730411, guid: 831a7175529d6bb4b811e3bc92d22a99, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 1636100998}
     - target: {fileID: 3483691573322305041, guid: 831a7175529d6bb4b811e3bc92d22a99, type: 3}
       propertyPath: rotation
       value: -60
@@ -10002,7 +10036,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3483691573322305041, guid: 831a7175529d6bb4b811e3bc92d22a99, type: 3}
       propertyPath: animatedObjects.Array.size
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3483691573322305041, guid: 831a7175529d6bb4b811e3bc92d22a99, type: 3}
       propertyPath: 'activateObjects.Array.data[0]'
@@ -10078,10 +10112,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9118658281315451227, guid: 831a7175529d6bb4b811e3bc92d22a99, type: 3}
       propertyPath: onInteraction.m_PersistentCalls.m_Calls.Array.size
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 9118658281315451227, guid: 831a7175529d6bb4b811e3bc92d22a99, type: 3}
       propertyPath: onInteraction.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9118658281315451227, guid: 831a7175529d6bb4b811e3bc92d22a99, type: 3}
+      propertyPath: onInteraction.m_PersistentCalls.m_Calls.Array.data[3].m_Mode
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9118658281315451227, guid: 831a7175529d6bb4b811e3bc92d22a99, type: 3}
@@ -10089,11 +10127,23 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1741884222}
     - target: {fileID: 9118658281315451227, guid: 831a7175529d6bb4b811e3bc92d22a99, type: 3}
+      propertyPath: onInteraction.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1944553826}
+    - target: {fileID: 9118658281315451227, guid: 831a7175529d6bb4b811e3bc92d22a99, type: 3}
       propertyPath: onInteraction.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
       objectReference: {fileID: 1944553817}
     - target: {fileID: 9118658281315451227, guid: 831a7175529d6bb4b811e3bc92d22a99, type: 3}
+      propertyPath: onInteraction.m_PersistentCalls.m_Calls.Array.data[3].m_Target
+      value: 
+      objectReference: {fileID: 1944553817}
+    - target: {fileID: 9118658281315451227, guid: 831a7175529d6bb4b811e3bc92d22a99, type: 3}
       propertyPath: onInteraction.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9118658281315451227, guid: 831a7175529d6bb4b811e3bc92d22a99, type: 3}
+      propertyPath: onInteraction.m_PersistentCalls.m_Calls.Array.data[3].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 9118658281315451227, guid: 831a7175529d6bb4b811e3bc92d22a99, type: 3}
@@ -10102,10 +10152,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9118658281315451227, guid: 831a7175529d6bb4b811e3bc92d22a99, type: 3}
       propertyPath: onInteraction.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: OnFragmentCaptured
+      value: TriggerArmRaise
       objectReference: {fileID: 0}
     - target: {fileID: 9118658281315451227, guid: 831a7175529d6bb4b811e3bc92d22a99, type: 3}
       propertyPath: onInteraction.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
+      value: OnFragmentCaptured
+      objectReference: {fileID: 0}
+    - target: {fileID: 9118658281315451227, guid: 831a7175529d6bb4b811e3bc92d22a99, type: 3}
+      propertyPath: onInteraction.m_PersistentCalls.m_Calls.Array.data[3].m_MethodName
       value: DestroyFragment
       objectReference: {fileID: 0}
     - target: {fileID: 9118658281315451227, guid: 831a7175529d6bb4b811e3bc92d22a99, type: 3}
@@ -10113,11 +10167,23 @@ PrefabInstance:
       value: SundialMaterialController, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 9118658281315451227, guid: 831a7175529d6bb4b811e3bc92d22a99, type: 3}
+      propertyPath: onInteraction.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: SundialAnimator, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 9118658281315451227, guid: 831a7175529d6bb4b811e3bc92d22a99, type: 3}
       propertyPath: onInteraction.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
       value: TheFall.FragmentController.FragmentCaptured, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 9118658281315451227, guid: 831a7175529d6bb4b811e3bc92d22a99, type: 3}
+      propertyPath: onInteraction.m_PersistentCalls.m_Calls.Array.data[3].m_TargetAssemblyTypeName
+      value: TheFall.FragmentController.FragmentCaptured, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 9118658281315451227, guid: 831a7175529d6bb4b811e3bc92d22a99, type: 3}
       propertyPath: onInteraction.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 9118658281315451227, guid: 831a7175529d6bb4b811e3bc92d22a99, type: 3}
+      propertyPath: onInteraction.m_PersistentCalls.m_Calls.Array.data[3].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -10139,6 +10205,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1b0c8eab1121f274da1635a44e9af0ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1944553826 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2670700188124730411, guid: 831a7175529d6bb4b811e3bc92d22a99, type: 3}
+  m_PrefabInstance: {fileID: 1944553810}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db67bc291073b5c49adc1fd5c9bcf75d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &1957207632
@@ -11648,6 +11725,22 @@ PrefabInstance:
     - target: {fileID: 5195765477408838994, guid: 1e3546fb8005c054da3131768c6d338c, type: 3}
       propertyPath: m_Name
       value: SlidingPlatformSmall
+      objectReference: {fileID: 0}
+    - target: {fileID: 6931928108707818416, guid: 1e3546fb8005c054da3131768c6d338c, type: 3}
+      propertyPath: m_Size.x
+      value: 25.68278
+      objectReference: {fileID: 0}
+    - target: {fileID: 6931928108707818416, guid: 1e3546fb8005c054da3131768c6d338c, type: 3}
+      propertyPath: m_Center.x
+      value: 12.786773
+      objectReference: {fileID: 0}
+    - target: {fileID: 6931928108707818416, guid: 1e3546fb8005c054da3131768c6d338c, type: 3}
+      propertyPath: m_Center.y
+      value: 6.73207
+      objectReference: {fileID: 0}
+    - target: {fileID: 6931928108707818416, guid: 1e3546fb8005c054da3131768c6d338c, type: 3}
+      propertyPath: m_Center.z
+      value: 2.719015
       objectReference: {fileID: 0}
     - target: {fileID: 7940801678269713645, guid: 1e3546fb8005c054da3131768c6d338c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -14195,6 +14288,54 @@ PrefabInstance:
       propertyPath: m_Name
       value: SundialWatch
       objectReference: {fileID: 0}
+    - target: {fileID: 6253722356092898737, guid: 421e658cc536fbc41b80095f482e9f32, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 1636100998}
+    - target: {fileID: 7142550699999628429, guid: 421e658cc536fbc41b80095f482e9f32, type: 3}
+      propertyPath: onInteraction.m_PersistentCalls.m_Calls.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7142550699999628429, guid: 421e658cc536fbc41b80095f482e9f32, type: 3}
+      propertyPath: onInteraction.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7142550699999628429, guid: 421e658cc536fbc41b80095f482e9f32, type: 3}
+      propertyPath: onInteraction.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 99283590}
+    - target: {fileID: 7142550699999628429, guid: 421e658cc536fbc41b80095f482e9f32, type: 3}
+      propertyPath: onInteraction.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
+      objectReference: {fileID: 99283584}
+    - target: {fileID: 7142550699999628429, guid: 421e658cc536fbc41b80095f482e9f32, type: 3}
+      propertyPath: onInteraction.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7142550699999628429, guid: 421e658cc536fbc41b80095f482e9f32, type: 3}
+      propertyPath: onInteraction.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: TriggerArmRaise
+      objectReference: {fileID: 0}
+    - target: {fileID: 7142550699999628429, guid: 421e658cc536fbc41b80095f482e9f32, type: 3}
+      propertyPath: onInteraction.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: OnFragmentCaptured
+      objectReference: {fileID: 0}
+    - target: {fileID: 7142550699999628429, guid: 421e658cc536fbc41b80095f482e9f32, type: 3}
+      propertyPath: onInteraction.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
+      value: DestroyFragment
+      objectReference: {fileID: 0}
+    - target: {fileID: 7142550699999628429, guid: 421e658cc536fbc41b80095f482e9f32, type: 3}
+      propertyPath: onInteraction.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: SundialAnimator, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7142550699999628429, guid: 421e658cc536fbc41b80095f482e9f32, type: 3}
+      propertyPath: onInteraction.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
+      value: TheFall.FragmentController.FragmentCaptured, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7142550699999628429, guid: 421e658cc536fbc41b80095f482e9f32, type: 3}
+      propertyPath: onInteraction.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 7450403034932454296, guid: 421e658cc536fbc41b80095f482e9f32, type: 3}
       propertyPath: m_LocalPosition.x
       value: -280.08
@@ -14238,6 +14379,10 @@ PrefabInstance:
     - target: {fileID: 8521880170176082172, guid: 421e658cc536fbc41b80095f482e9f32, type: 3}
       propertyPath: rotation
       value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 8521880170176082172, guid: 421e658cc536fbc41b80095f482e9f32, type: 3}
+      propertyPath: animatedObjects.Array.size
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8521880170176082172, guid: 421e658cc536fbc41b80095f482e9f32, type: 3}
       propertyPath: 'animatedObjects.Array.data[0]'

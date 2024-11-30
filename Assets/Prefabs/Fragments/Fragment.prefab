@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 5157755835062737382}
   - component: {fileID: 5892804711439162521}
   - component: {fileID: 6616106689477639242}
+  - component: {fileID: 2670700188124730411}
   m_Layer: 6
   m_Name: Fragment
   m_TagString: Untagged
@@ -212,6 +213,8 @@ MonoBehaviour:
   exposedParam: sfxVol
   duration: 1
   targetVol: 0
+  rotation: 0
+  celestialController: {fileID: 0}
 --- !u!114 &9118658281315451227
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -323,6 +326,19 @@ AudioReverbZone:
   m_Density: 100
   m_LFReference: 250
   m_RoomLF: 0
+--- !u!114 &2670700188124730411
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8847577839827064778}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db67bc291073b5c49adc1fd5c9bcf75d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 0}
 --- !u!1 &9166463337241955654
 GameObject:
   m_ObjectHideFlags: 0
