@@ -941,13 +941,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 284543840}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.4221129, y: 0.04395716, z: -0.02049709, w: 0.90524495}
+  m_LocalRotation: {x: 0.086824074, y: -0.8528686, z: 0.15038373, w: 0.49240384}
   m_LocalPosition: {x: -129.02214, y: -3.0982928, z: -26.36463}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 49.999, y: 5.56, z: 0}
+  m_LocalEulerAnglesHint: {x: 20, y: -120, z: 0}
 --- !u!1 &284548038
 GameObject:
   m_ObjectHideFlags: 0
@@ -1329,7 +1329,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 10ef19783ebac01469ff2a8030a7e33d, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: de582168811b94647983a8515de29029, type: 2}
+      objectReference: {fileID: 2100000, guid: a4f2a815ef8d94e479b51c5aabbdf7a9, type: 2}
     - target: {fileID: 919132149155446097, guid: 10ef19783ebac01469ff2a8030a7e33d, type: 3}
       propertyPath: m_Name
       value: SM_Monolith_Pt02
@@ -3425,7 +3425,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 4f7bb9c0a4ccc6e47b112432c38c8031, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: de582168811b94647983a8515de29029, type: 2}
+      objectReference: {fileID: 2100000, guid: a4f2a815ef8d94e479b51c5aabbdf7a9, type: 2}
     - target: {fileID: 919132149155446097, guid: 4f7bb9c0a4ccc6e47b112432c38c8031, type: 3}
       propertyPath: m_Name
       value: SM_Monolith_Pt03
@@ -3619,7 +3619,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 9b5f9a0991db5164d92675e0777b8b23, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: de582168811b94647983a8515de29029, type: 2}
+      objectReference: {fileID: 2100000, guid: a4f2a815ef8d94e479b51c5aabbdf7a9, type: 2}
     - target: {fileID: 919132149155446097, guid: 9b5f9a0991db5164d92675e0777b8b23, type: 3}
       propertyPath: m_Name
       value: SM_Monolith_Pt01
@@ -4193,6 +4193,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3483691573322305041, guid: 831a7175529d6bb4b811e3bc92d22a99, type: 3}
+      propertyPath: rotation
+      value: 120
+      objectReference: {fileID: 0}
     - target: {fileID: 3483691573322305041, guid: 831a7175529d6bb4b811e3bc92d22a99, type: 3}
       propertyPath: staticObjects.Array.size
       value: 1
